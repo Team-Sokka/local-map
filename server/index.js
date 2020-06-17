@@ -2,16 +2,24 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const path = require('path');
 const externalAPI = require('./externalAPI.js')
 const app = express()
 const port = process.env.PORT;
 
+//Middleware
 app.use(morgan('tiny'));
+app.use(helmet())
 app.set('query parser', 'simple');
 
+//Set Static Folder
+app.use(express.static(path.join(__dirname, '../public')))
+
+//Endpoints
 app.get('/', (req, res) => {
-  console.log('query params', req.query)
-  res.send('Hello World');
+  //console.log('query params', req.query)
+  //res.send('Hello World');
+  res.sendFile('index')
 });
 
 app.get('/map/:service', (req, res) => {
