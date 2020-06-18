@@ -12,14 +12,13 @@ class App extends React.Component {
   }
   toggleModal(){
     var visibility = this.state.modalVisible ? false : true;
-
     this.setState({
       modalVisible: visibility
     });
   }
   render(){
     let modal;
-    this.state.modalVisible ? modal = <Modal /> : modal = ''
+    this.state.modalVisible ? modal = <Modal closeModal={this.toggleModal.bind(this)}/> : modal = ''
     return (
       <React.Fragment>
 

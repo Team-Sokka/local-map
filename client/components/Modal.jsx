@@ -3,7 +3,7 @@ import ModalNav from './ModalNav.jsx'
 
 const Modal = (props) => (
 <div className="modal-container">
-  <ModalNav />
+  <ModalNav closeModal={props.closeModal}/>
   <h1>Modal</h1>
 </div>
 )

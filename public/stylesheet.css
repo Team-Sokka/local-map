@@ -38,4 +38,8 @@ background-color: rgb(235,235,235);
 margin: 0;
 position: absolute;
 border-radius: 5px;
+display: flex;
+align-items: center;
+justify-content:space-between;
+flex-direction: row;
 }
