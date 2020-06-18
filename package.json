@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon server/index.js",
     "build": "webpack --config webpack.config.js",
-    "lint": "eslint database/** server/** ",
+    "lint": "eslint database/** server/**",
     "seed": "node ./database/seed.js",
     "test": "jest"
   },

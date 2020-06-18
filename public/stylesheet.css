@@ -4,7 +4,7 @@
 
 }
 .individual-map-container {
-min-width: 200px;
+  min-width: 200px;
 }
 .individual-map-tile {
   background-color: blue;
@@ -42,4 +42,8 @@ display: flex;
 align-items: center;
 justify-content:space-between;
 flex-direction: row;
+}
+
+#map {
+  height: 100%
 }
