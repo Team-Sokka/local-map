@@ -9,7 +9,26 @@ class App extends React.Component {
   render(){
     return (
       <div className="map-module-container">
-        <h1>Map</h1>
+        <div className="individual-map-container">
+          <div className="individual-map-tile"></div>
+          <h1>Basic Map</h1>
+          <p>Details</p>
+        </div>
+        <div className="individual-map-container">
+        <div className="individual-map-tile"></div>
+          <h1>Shop & Eat</h1>
+          <p>Details</p>
+        </div>
+        <div className="individual-map-container">
+        <div className="individual-map-tile"></div>
+          <h1>Map 3</h1>
+          <p>Details</p>
+        </div>
+        <div className="individual-map-container">
+        <div className="individual-map-tile"></div>
+          <h1>Map 2</h1>
+          <p>Details</p>
+        </div>
       </div>
     )
   }
