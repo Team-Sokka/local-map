@@ -1,8 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const App = (props) => (
-  <h1>App Component</h1>
-)
+
+class App extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return (
+      <div className="map-module-container">
+        <h1>Map</h1>
+      </div>
+    )
+  }
+
+}
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
