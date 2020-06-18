@@ -1,32 +1,33 @@
 
+//Seed Data from Trulia
+const trulia = require('../database/truliaSeedData.js')
+const db = require('./index.js')
+const House = require('./House.js')
 
-//generate objects to insert
+//randomization functions (if necessary)
 
-// address: String,
-// bedrooms: Number,
-// bathrooms: Number,
-// price: Number,
-// sqft: Number,
-// location: {coordinates:[]}
+var streetNumber = () => JSON.stringify(Math.floor(Math.random()*900)+1000);
+var streetName = () => streetNames[Math.round(Math.random()*(streetNames.length-1))];
+var streetType = () => streetTypes[Math.round(Math.random()*(streetTypes.length-1))];
+var beds = () => Math.floor(Math.random()* 5)+1;
+var baths = () => Math.floor(Math.random()* 5)+1;
+var price = () => Math.floor(Math.random()* 3000000)+100000;
+var sqft = () => Math.floor(Math.random()* 2000) +1000;
 
-
-var bedroomOptions = [];
-var bathroomOptions = [];
-var price;
-var sqft;
-//how to randomize coordinates?
-//have a base and a random addition or subtraction?
-
-var n = 0;
-var houses = {};
-var idCount = 0;
-while(n < 5) {
-  var id = idCount+=1
-  houses[id] = {};
-  houses[id].bedrooms = Math.floor(Math.random()* 5);
-  houses[id].bathrooms = Math.floor(Math.random()* 5);
-  houses[id].price = Math.floor(Math.random()* 3000000)+100000;
-  houses[id].sqft = Math.floor(Math.random()* 2000) +1000;
-  n++;
+var homes = trulia.truliaData.data.searchResultMap.homes;
+var houses = [];
+for (home of homes) {
+  house = {};
+  house.address = home.location.fullLocation;
+  house.beds = home.bathrooms ? parseInt(home.bathrooms.formattedValue.substring(0, home.bathrooms.formattedValue.length-2)) : beds();
+  house.baths = home.bedrooms ? parseInt(home.bedrooms.formattedValue.substring(0, home.bedrooms.formattedValue.length-2)) : baths();
+  house.price = parseInt(home.price.formattedPrice.substring(1, home.price.formattedPrice.length).replace(/\,/g,''));
+  house.sqft = parseInt(home.floorSpace.formattedDimension.substring(0, home.floorSpace.formattedDimension.length).replace(' sqft','').replace(/\,/g,''));
+  house.location = {type: "Point", coordinates:[home.location.coordinates.longitude, home.location.coordinates.latitude] }
+  houses.push(house)
+  var newHouse = new House(house);
+  newHouse.save((err)=> err ? console.error(err) : '')
 }
-console.log(houses)
+
+//House.find().then(data => {console.log('data - ',data); return data}).catch(err => console.log('Error: ', err))
+
