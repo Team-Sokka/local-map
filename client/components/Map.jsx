@@ -7,10 +7,13 @@ class Map extends React.Component {
     super(props)
   }
   componentDidMount(){
+    var centerPoint = { lat: 21.260088, lng: -157.706806 };
     var map = new window.google.maps.Map(document.getElementById("map"), {
-        center: { lat: 21.260088, lng: -157.706806 },
+        center: centerPoint,
         zoom: 15
     });
+    var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
+
   }
   render(){
     return (
