@@ -4,6 +4,7 @@ var yelp = (lat, lng, categories="food,restaurants,grocery, nightlife,arts,cafes
     params: {
       latitude: lat,
       longitude: lng,
+      categories: categories
     },
     headers: {
       "Authorization": `Bearer ${process.env.YELP_API_KEY}`
