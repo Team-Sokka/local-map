@@ -1,7 +1,7 @@
 
 //Seed Data from Trulia
 const trulia = require('../database/truliaSeedData.js')
-const db = require('./index.js')
+
 const House = require('./House.js')
 
 //randomization functions (if necessary)
