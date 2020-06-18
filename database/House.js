@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-//const db = require('./index.js')
 require('./index.js')
-
 mongoose.Promise = global.Promise;
+
+
 
 //Note that LONGITUDE COMES FIRST
 const pointSchema = new mongoose.Schema({
