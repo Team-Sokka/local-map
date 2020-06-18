@@ -1,4 +1,7 @@
-const pointSchema = mongoose.schema({
+const db = require('./index.js')
+mongoose.Promise = global.Promise;
+
+const pointSchema = new mongoose.Schema({
   type:{
     type: String,
     enum:['Point'],
@@ -10,7 +13,7 @@ const pointSchema = mongoose.schema({
   }
 })
 
-const houseSchema = mongoose.schema({
+const houseSchema = new mongoose.Schema({
   address: String,
   bedrooms: Number,
   bathrooms: Number,
