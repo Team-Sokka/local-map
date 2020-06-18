@@ -1,5 +1,10 @@
-const db = require('./index.js')
+const mongoose = require('mongoose');
+require('./index.js')
+mongoose.Promise = global.Promise;
 
+
+
+//Note that LONGITUDE COMES FIRST
 const pointSchema = new mongoose.Schema({
   type:{
     type: String,
@@ -10,12 +15,12 @@ const pointSchema = new mongoose.Schema({
     type:[Number],
     required: true
   }
-})
+});
 
 const houseSchema = new mongoose.Schema({
   address: String,
-  bedrooms: Number,
-  bathrooms: Number,
+  beds: Number,
+  baths: Number,
   price: Number,
   sqft: Number,
   location: {
@@ -25,3 +30,4 @@ const houseSchema = new mongoose.Schema({
 }, {timestamps:true})
 
 const House = mongoose.model('House', houseSchema);
+module.exports = House;
