@@ -1,5 +1,4 @@
 const db = require('./index.js')
-mongoose.Promise = global.Promise;
 
 const pointSchema = new mongoose.Schema({
   type:{

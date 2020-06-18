@@ -17,8 +17,6 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 //Endpoints
 app.get('/', (req, res) => {
-  //console.log('query params', req.query)
-  //res.send('Hello World');
   res.sendFile('index')
 });
 
