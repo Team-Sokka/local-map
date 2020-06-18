@@ -17,14 +17,11 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 //Endpoints
 app.get('/', (req, res) => {
-  //console.log('query params', req.query)
-  //res.send('Hello World');
   res.sendFile('index')
 });
 app.get('/seed', (req, res) => {
-  console.log();
   res.send(trulia.truliaData.data)
-})
+});
 app.get('/map/:service', (req, res) => {
   var lat = req.query.lat;
   var lng = req.query.lng;
