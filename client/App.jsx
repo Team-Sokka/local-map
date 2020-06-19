@@ -14,12 +14,10 @@ class App extends React.Component {
     }
   }
   componentDidMount(){
-    var paramsArr = window.location.search.replace('?','').split('&');
-    var params = {};
-    paramsArr.forEach((item) => {
-      var equal = item.indexOf('=');
-      params[item.substring(0, equal)] = Number(item.substring(equal+1, item.length));
-    });
+    //get request for house location, based on an id
+      //then setState of location
+        //then render map
+    var params = this.pullParams()
     var centerPoint = {lat: params.lat,lng: params.lng}
     this.setState({
       location: centerPoint
@@ -40,6 +38,15 @@ class App extends React.Component {
         streetViewControl: false
     });
     var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
+  }
+  pullParams(){
+    var paramsArr = window.location.search.replace('?','').split('&');
+    var params = {};
+    paramsArr.forEach((item) => {
+      var equal = item.indexOf('=');
+      params[item.substring(0, equal)] = Number(item.substring(equal+1, item.length));
+    });
+    return params;
   }
   getShopAndEatMarkers(){
     axios.get(`/map/yelp`,{params:{
