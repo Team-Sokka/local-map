@@ -29,6 +29,10 @@ class App extends React.Component {
       })
     });
   }
+  basicMap(){
+    this.clearAllMarkers();
+    this.toggleModal();
+  }
   toggleModal(){
     var visibility = this.state.modalVisible ? false : true;
     this.setState({
@@ -39,7 +43,13 @@ class App extends React.Component {
     this.setState({
       api: 'yelp'
     })
+    this.getShopAndEatMarkers();
     this.toggleModal();
+  }
+  clearAllMarkers(){
+    this.setState({
+      shopAndEatMarkers: []
+    })
   }
   render(){
     let modal;
@@ -49,7 +59,7 @@ class App extends React.Component {
 
       {modal}
       <div className="map-module-container">
-        <div className="individual-map-container" onClick={this.toggleModal.bind(this)}>
+        <div className="individual-map-container" onClick={this.basicMap.bind(this)}>
           <div className="individual-map-tile"></div>
           <h1>Basic Map</h1>
           <p>Details</p>
