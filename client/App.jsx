@@ -61,6 +61,7 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
+    console.log(data.data.businesses)
     var markers = data.data.businesses.map((business) => {
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
