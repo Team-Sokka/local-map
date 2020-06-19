@@ -17,7 +17,18 @@ class App extends React.Component {
     var centerPoint = this.state.location;
     window.map = new window.google.maps.Map(document.getElementById("map"), {
         center: centerPoint,
-        zoom: 15
+        zoom: 15,
+        fullscreenControlOptions: {
+          position: google.maps.ControlPosition.TOP_LEFT
+        },
+        mapTypeControlOptions: {
+          mapTypeIds: ['roadmap', 'satellite'],
+          position: google.maps.ControlPosition.TOP_LEFT
+        },
+        zoomControlOptions:{
+          position: google.maps.ControlPosition.LEFT_BOTTOM
+        },
+        streetViewControl: false
     });
     var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
   }
