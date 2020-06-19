@@ -12,7 +12,9 @@ jobs:
             - run: npm install
             - run: npm test
             - store_test_results:
-                path: ../test/test-results
+                path: ./test/test-results/
+            - store_artifacts:
+                path: ./test/test-results
 
 workflows:
     build-and-test:
