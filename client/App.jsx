@@ -10,11 +10,20 @@ class App extends React.Component {
     this.state = {
       modalVisible: 'hidden',
       shopAndEatMarkers: [],
-      location: { lat: 21.260088, lng: -157.706806 }
+      location: {}
     }
   }
   componentDidMount(){
-    var centerPoint = this.state.location;
+    var paramsArr = window.location.search.replace('?','').split('&');
+    var params = {};
+    paramsArr.forEach((item) => {
+      var equal = item.indexOf('=');
+      params[item.substring(0, equal)] = Number(item.substring(equal+1, item.length));
+    });
+    var centerPoint = {lat: params.lat,lng: params.lng}
+    this.setState({
+      location: centerPoint
+    })
     window.map = new window.google.maps.Map(document.getElementById("map"), {
         center: centerPoint,
         zoom: 15,
@@ -38,15 +47,12 @@ class App extends React.Component {
       lng: this.state.location.lng
     }
   }).then((data) => {
-    console.log('Updating shop and Eat markers')
-
     var markers = data.data.businesses.map((business) => {
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
     this.setState({
       shopAndEatMarkers: markers
       })
-      console.log('Markers: ', this.state.shopAndEatMarkers)
     })
   }
   basicMap(){
@@ -69,7 +75,6 @@ class App extends React.Component {
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
-      console.log('removing')
       marker.setMap(null)
     })
   }
