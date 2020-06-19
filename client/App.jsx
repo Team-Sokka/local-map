@@ -31,7 +31,7 @@ class App extends React.Component {
     console.log('Updating shop and Eat markers')
 
     var markers = data.data.businesses.map((business) => {
-      return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, map: window.map})
+      return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
     this.setState({
       shopAndEatMarkers: markers
