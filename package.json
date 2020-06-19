@@ -1,9 +1,9 @@
 {
-  "name": "",
+  "name": "MapModule",
   "version": "",
   "description": "",
-  "author": "",
-  "license": "",
+  "author": "Quinn Royston",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
