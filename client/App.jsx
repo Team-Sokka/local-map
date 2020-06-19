@@ -10,9 +10,9 @@ class App extends React.Component {
     this.state = {
       modalVisible: 'hidden',
       shopAndEatMarkers: [],
-      location: { lat: 21.260088, lng: -157.706806 }
+      location: { lat: 21.260088, lng: -157.706806 },
+      streetView: false
     }
-
   }
   componentDidMount(){
     var centerPoint = this.state.location;
@@ -54,6 +54,11 @@ class App extends React.Component {
     this.getShopAndEatMarkers();
     this.toggleModal();
   }
+  streetView(){
+    this.toggleModal();
+    var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
+
+  }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
       console.log('removing')
@@ -76,8 +81,8 @@ class App extends React.Component {
           <p>Details</p>
         </div>
         <div className="individual-map-container">
-        <div className="individual-map-tile"></div>
-          <h1>Map 3</h1>
+        <div className="individual-map-tile" onClick={this.streetView.bind(this)}></div>
+          <h1>Street View</h1>
           <p>Details</p>
         </div>
         <div className="individual-map-container">

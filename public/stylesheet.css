@@ -45,5 +45,8 @@ flex-direction: row;
 }
 
 #map {
+  height: 0%
+}
+#street-view {
   height: 100%
 }
