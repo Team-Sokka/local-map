@@ -11,9 +11,10 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-      - store_test_results:
-        path: ~/test-results
+
 workflows:
     build-and-test:
       jobs:
         - build-and-test
+        - store_test_results:
+          path: ~/test-results
