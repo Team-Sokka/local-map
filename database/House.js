@@ -18,6 +18,7 @@ const pointSchema = new mongoose.Schema({
 });
 
 const houseSchema = new mongoose.Schema({
+  houseId: Number,
   address: String,
   beds: Number,
   baths: Number,

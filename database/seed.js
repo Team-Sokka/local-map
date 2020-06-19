@@ -11,9 +11,11 @@ var baths = () => Math.floor(Math.random()* 5)+1;
 //var sqft = () => Math.floor(Math.random()* 2000) +1000;
 
 var homes = trulia.truliaData.data.searchResultMap.homes;
-
+var count = 0;
 var seeds = homes.map((home) => {
   var house = {};
+  count++
+  house.houseId = count;
   house.address = home.location.fullLocation;
   house.beds = home.bedrooms ? parseInt(home.bathrooms.formattedValue.substring(0, home.bathrooms.formattedValue.length-2)) : beds();
   house.baths = home.bedrooms ? parseInt(home.bedrooms.formattedValue.substring(0, home.bedrooms.formattedValue.length-2)) : baths();

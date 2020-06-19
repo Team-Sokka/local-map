@@ -9,12 +9,35 @@ class App extends React.Component {
     super(props)
     this.state = {
       modalVisible: 'hidden',
+      currentHouse: {},
       shopAndEatMarkers: [],
-      location: { lat: 21.260088, lng: -157.706806 }
+      location: {}
     }
   }
   componentDidMount(){
-    var centerPoint = this.state.location;
+    var params = this.pullParams();
+    axios.get(`/house/${params.id}`)
+    .then((data)=> {
+      this.setState({
+        currentHouse: data.data[0],
+        location: data.data[0].location.coordinates
+      })
+    }).then(() => {
+      //invoke function to create Map
+      this.initializeMap();
+      }).catch((err)=>console.log(err))
+  }
+  pullParams(){
+    var paramsArr = window.location.search.replace('?','').split('&');
+    var params = {};
+    paramsArr.forEach((item) => {
+      var equal = item.indexOf('=');
+      params[item.substring(0, equal)] = item.substring(equal+1, item.length);
+    });
+    return params;
+  }
+  initializeMap(){
+    var centerPoint = {lat: this.state.location[1] ,lng: this.state.location[0]}
     window.map = new window.google.maps.Map(document.getElementById("map"), {
         center: centerPoint,
         zoom: 15,
@@ -34,19 +57,17 @@ class App extends React.Component {
   }
   getShopAndEatMarkers(){
     axios.get(`/map/yelp`,{params:{
-      lat: this.state.location.lat,
-      lng: this.state.location.lng
+      lat: this.state.location[1],
+      lng: this.state.location[0]
     }
   }).then((data) => {
-    console.log('Updating shop and Eat markers')
-
+    console.log(data.data.businesses)
     var markers = data.data.businesses.map((business) => {
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
     this.setState({
       shopAndEatMarkers: markers
       })
-      console.log('Markers: ', this.state.shopAndEatMarkers)
     })
   }
   basicMap(){
@@ -69,7 +90,6 @@ class App extends React.Component {
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
-      console.log('removing')
       marker.setMap(null)
     })
   }
