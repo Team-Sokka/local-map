@@ -8,56 +8,62 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      modalVisible: false,
-      api: '',
-      shopAndEatMarkers: []
+      modalVisible: 'hidden',
+      shopAndEatMarkers: [],
+      location: { lat: 21.260088, lng: -157.706806 }
     }
-    this.location = { lat: 21.260088, lng: -157.706806 };
+
   }
   componentDidMount(){
-    this.getShopAndEatMarkers();
+    var centerPoint = this.state.location;
+    window.map = new window.google.maps.Map(document.getElementById("map"), {
+        center: centerPoint,
+        zoom: 15
+    });
+    var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
   }
   getShopAndEatMarkers(){
     axios.get(`/map/yelp`,{params:{
-      lat: this.location.lat,
-      lng: this.location.lng
+      lat: this.state.location.lat,
+      lng: this.state.location.lng
     }
   }).then((data) => {
-    console.log(data.data)
+    console.log('Updating shop and Eat markers')
+
+    var markers = data.data.businesses.map((business) => {
+      return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, map: window.map})
+    })
     this.setState({
-      shopAndEatMarkers: data.data.businesses
+      shopAndEatMarkers: markers
       })
-    });
+      console.log('Markers: ', this.state.shopAndEatMarkers)
+    })
   }
   basicMap(){
     this.clearAllMarkers();
     this.toggleModal();
   }
   toggleModal(){
-    var visibility = this.state.modalVisible ? false : true;
+    var visibility = this.state.modalVisible === 'hidden' ? 'visible' : 'hidden';
+    console.log('toggled')
     this.setState({
       modalVisible: visibility
     });
   }
   shopAndEatMap(){
-    this.setState({
-      api: 'yelp'
-    })
     this.getShopAndEatMarkers();
     this.toggleModal();
   }
   clearAllMarkers(){
-    this.setState({
-      shopAndEatMarkers: []
+    this.state.shopAndEatMarkers.forEach(marker => {
+      console.log('removing')
+      marker.setMap(null)
     })
   }
   render(){
-    let modal;
-    this.state.modalVisible ? modal = <Modal shopAndEatMarkers={this.state.shopAndEatMarkers} api={this.state.api} location={this.location} closeModal={this.toggleModal.bind(this)}/> : modal = ''
     return (
       <React.Fragment>
-
-      {modal}
+       <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible}/>
       <div className="map-module-container">
         <div className="individual-map-container" onClick={this.basicMap.bind(this)}>
           <div className="individual-map-tile"></div>
