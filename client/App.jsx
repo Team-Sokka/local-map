@@ -10,8 +10,7 @@ class App extends React.Component {
     this.state = {
       modalVisible: 'hidden',
       shopAndEatMarkers: [],
-      location: { lat: 21.260088, lng: -157.706806 },
-      streetView: false
+      location: { lat: 21.260088, lng: -157.706806 }
     }
   }
   componentDidMount(){
@@ -44,10 +43,9 @@ class App extends React.Component {
     this.toggleModal();
   }
   toggleModal(){
-    var visibility = this.state.modalVisible === 'hidden' ? 'visible' : 'hidden';
-    console.log('toggled')
+    var modalVisibility = this.state.modalVisible === 'hidden' ? 'visible' : 'hidden';
     this.setState({
-      modalVisible: visibility
+      modalVisible: modalVisibility,
     });
   }
   shopAndEatMap(){
@@ -56,8 +54,7 @@ class App extends React.Component {
   }
   streetView(){
     this.toggleModal();
-    var panorama = new google.maps.StreetViewPanorama(document.getElementById('street-view'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
-
+    var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
@@ -68,7 +65,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible}/>
+       <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <div className="map-module-container">
         <div className="individual-map-container" onClick={this.basicMap.bind(this)}>
           <div className="individual-map-tile"></div>
