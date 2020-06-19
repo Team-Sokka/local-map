@@ -14,17 +14,9 @@ class Map extends React.Component {
     });
     var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
     if (this.props.api ==='yelp') {
-      console.log('GET REQUEST TO YELP BABY!')
-      console.log(this.props.location)
-      axios.get(`/map/${this.props.api}`,{params:{
-        lat: this.props.location.lat,
-        lng: this.props.location.lng
-      }
-    }).then((data) => {
-      data.data.businesses.forEach((business) => {
+      this.props.shopAndEatMarkers.forEach((business) => {
         var marker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, map:map})
       })
-      });
     }
   }
   render(){

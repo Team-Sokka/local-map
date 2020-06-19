@@ -6,7 +6,7 @@ const Modal = (props) => (
 <div className="modal-container">
   <ModalNav closeModal={props.closeModal}/>
   <h1>Modal</h1>
-  <Map location={props.location} api={props.api}/>
+  <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
 </div>
 )
 

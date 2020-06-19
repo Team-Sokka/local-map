@@ -1,5 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Modal from './components/Modal.jsx';
 
 
@@ -8,9 +9,25 @@ class App extends React.Component {
     super(props)
     this.state = {
       modalVisible: false,
-      api: ''
+      api: '',
+      shopAndEatMarkers: []
     }
     this.location = { lat: 21.260088, lng: -157.706806 };
+  }
+  componentDidMount(){
+    this.getShopAndEatMarkers();
+  }
+  getShopAndEatMarkers(){
+    axios.get(`/map/yelp`,{params:{
+      lat: this.location.lat,
+      lng: this.location.lng
+    }
+  }).then((data) => {
+    console.log(data.data)
+    this.setState({
+      shopAndEatMarkers: data.data.businesses
+      })
+    });
   }
   toggleModal(){
     var visibility = this.state.modalVisible ? false : true;
@@ -23,11 +40,10 @@ class App extends React.Component {
       api: 'yelp'
     })
     this.toggleModal();
-
   }
   render(){
     let modal;
-    this.state.modalVisible ? modal = <Modal api={this.state.api} location={this.location} closeModal={this.toggleModal.bind(this)}/> : modal = ''
+    this.state.modalVisible ? modal = <Modal shopAndEatMarkers={this.state.shopAndEatMarkers} api={this.state.api} location={this.location} closeModal={this.toggleModal.bind(this)}/> : modal = ''
     return (
       <React.Fragment>
 
