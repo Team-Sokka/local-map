@@ -26,9 +26,9 @@ app.get('/seed', (req, res) => {
   res.send(trulia.truliaData.data)
 });
 
+//Route for getting housing data
 app.get('/house/:id', (req, res) =>{
   House.find({houseId: req.params.id}).then((data) => res.send(data)).catch(err => res.send(err))
-  //res.send('Getting House Info')
 })
 
 //GET request to work with API's
