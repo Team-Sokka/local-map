@@ -1,0 +1,49 @@
+.map-module-container {
+  display: flex;
+  justify-content: space-around;
+
+}
+.individual-map-container {
+  min-width: 200px;
+}
+.individual-map-tile {
+  background-color: blue;
+  border-radius: 6px;
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D');
+  background-repeat: no-repeat;
+  background-position: center;
+  height:104px;
+  background-size: 100%;
+}
+
+.modal-container {
+  height: 90%;
+  width: 90%;
+  z-index: 51000;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245,245,245);
+  border-color: silver;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.modal-nav {
+height: 60px;
+width: 100%;
+background-color: rgb(235,235,235);
+margin: 0;
+position: absolute;
+border-radius: 5px;
+display: flex;
+align-items: center;
+justify-content:space-between;
+flex-direction: row;
+}
+
+#map {
+  height: 100%
+}
