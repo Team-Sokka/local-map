@@ -9,19 +9,35 @@ class App extends React.Component {
     super(props)
     this.state = {
       modalVisible: 'hidden',
+      currentHouse: {},
       shopAndEatMarkers: [],
       location: {}
     }
   }
   componentDidMount(){
-    //get request for house location, based on an id
-      //then setState of location
-        //then render map
-    var params = this.pullParams()
-    var centerPoint = {lat: params.lat,lng: params.lng}
-    this.setState({
-      location: centerPoint
-    })
+    var params = this.pullParams();
+    axios.get(`/house/${params.id}`)
+    .then((data)=> {
+      this.setState({
+        currentHouse: data.data[0],
+        location: data.data[0].location.coordinates
+      })
+    }).then(() => {
+      //invoke function to create Map
+      this.initializeMap();
+      }).catch((err)=>console.log(err))
+  }
+  pullParams(){
+    var paramsArr = window.location.search.replace('?','').split('&');
+    var params = {};
+    paramsArr.forEach((item) => {
+      var equal = item.indexOf('=');
+      params[item.substring(0, equal)] = item.substring(equal+1, item.length);
+    });
+    return params;
+  }
+  initializeMap(){
+    var centerPoint = {lat: this.state.location[1] ,lng: this.state.location[0]}
     window.map = new window.google.maps.Map(document.getElementById("map"), {
         center: centerPoint,
         zoom: 15,
@@ -39,19 +55,10 @@ class App extends React.Component {
     });
     var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
   }
-  pullParams(){
-    var paramsArr = window.location.search.replace('?','').split('&');
-    var params = {};
-    paramsArr.forEach((item) => {
-      var equal = item.indexOf('=');
-      params[item.substring(0, equal)] = Number(item.substring(equal+1, item.length));
-    });
-    return params;
-  }
   getShopAndEatMarkers(){
     axios.get(`/map/yelp`,{params:{
-      lat: this.state.location.lat,
-      lng: this.state.location.lng
+      lat: this.state.location[1],
+      lng: this.state.location[0]
     }
   }).then((data) => {
     var markers = data.data.businesses.map((business) => {
