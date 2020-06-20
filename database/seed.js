@@ -1,4 +1,3 @@
-
 //Seed Data from Trulia
 const trulia = require('../database/truliaSeedData.js');
 const mongoose = require('mongoose')
@@ -7,8 +6,6 @@ const House = require('./House.js');
 //randomization functions (if necessary)
 var beds = () => Math.floor(Math.random()* 5)+1;
 var baths = () => Math.floor(Math.random()* 5)+1;
-//var price = () => Math.floor(Math.random()* 3000000)+100000;
-//var sqft = () => Math.floor(Math.random()* 2000) +1000;
 
 var homes = trulia.truliaData.data.searchResultMap.homes;
 var count = 0;
@@ -24,5 +21,5 @@ var seeds = homes.map((home) => {
   house.location = {type: "Point", coordinates:[home.location.coordinates.longitude, home.location.coordinates.latitude] }
   return new House(house).save();
 })
-Promise.all(seeds).then(()=>{mongoose.disconnect(()=>console.log('Connection Closed'))})
+Promise.all(seeds).then(()=>{mongoose.disconnect(()=>console.log('Database Seeded'))})
 
