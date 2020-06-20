@@ -14,8 +14,8 @@ var seeds = homes.map((home) => {
   count++
   house.houseId = count;
   house.address = home.location.fullLocation;
-  house.beds = home.bedrooms ? parseInt(home.bathrooms.formattedValue.substring(0, home.bathrooms.formattedValue.length-2)) : beds();
-  house.baths = home.bedrooms ? parseInt(home.bedrooms.formattedValue.substring(0, home.bedrooms.formattedValue.length-2)) : baths();
+  house.beds = home.bedrooms ? parseInt(home.bedrooms.formattedValue.substring(0, home.bedrooms.formattedValue.length-2)) : beds();
+  house.baths = home.bathrooms ? parseInt(home.bathrooms.formattedValue.substring(0, home.bathrooms.formattedValue.length-2)) : baths();
   house.price = parseInt(home.price.formattedPrice.substring(1, home.price.formattedPrice.length).replace(/\,/g,''));
   house.sqft = parseInt(home.floorSpace.formattedDimension.substring(0, home.floorSpace.formattedDimension.length).replace(' sqft','').replace(/\,/g,''));
   house.location = {type: "Point", coordinates:[home.location.coordinates.longitude, home.location.coordinates.latitude] }
