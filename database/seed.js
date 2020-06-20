@@ -3,7 +3,7 @@ const trulia = require('../database/truliaSeedData.js');
 const mongoose = require('mongoose')
 const House = require('./House.js');
 
-//randomization functions (if necessary)
+//functions to randomize the number of beds or baths. These are used if there isn't a number provided for bedrooms or bathrooms
 var beds = () => Math.floor(Math.random()* 5)+1;
 var baths = () => Math.floor(Math.random()* 5)+1;
 
