@@ -1,12 +1,9 @@
 {
-  "name": "MapModule",
-  "version": "",
-  "description": "",
+  "name": "map-module",
+  "version": "1.0.0",
+  "description": "Map module",
   "author": "Quinn Royston",
   "license": "ISC",
-  "engines": {
-    "node": ">=6.13.0"
-  },
   "scripts": {
     "dev": "nodemon server/index.js",
     "build": "webpack --config webpack.config.js",

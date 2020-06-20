@@ -3,7 +3,6 @@ require('./index.js')
 mongoose.Promise = global.Promise;
 
 
-
 //Note that LONGITUDE COMES FIRST
 const pointSchema = new mongoose.Schema({
   type:{
@@ -17,6 +16,7 @@ const pointSchema = new mongoose.Schema({
   }
 });
 
+//This schema is for House. It has a subschema of pointSchema to be able to work with geoJSON information
 const houseSchema = new mongoose.Schema({
   houseId: Number,
   address: String,
