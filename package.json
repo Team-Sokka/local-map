@@ -31,17 +31,5 @@
     "jest": "^26.0.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
-  },
-  "main": "jest.config.js",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Team-Sokka/local-map.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Team-Sokka/local-map/issues"
-  },
-  "homepage": "https://github.com/Team-Sokka/local-map#readme"
+  }
 }
