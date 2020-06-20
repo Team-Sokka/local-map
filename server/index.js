@@ -19,11 +19,11 @@ app.use(express.static(path.join(__dirname, '../public')))
 
 //Endpoints
 app.get('/', (req, res) => {
-  res.sendFile('index')
+  res.sendFile('index');
 });
 //Shows Seed Data
 app.get('/seed', (req, res) => {
-  res.send(trulia.truliaData.data)
+  res.send(trulia.truliaData.data);
 });
 
 //Route for getting housing data

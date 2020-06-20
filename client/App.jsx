@@ -29,6 +29,7 @@ class App extends React.Component {
   }
   pullParams(){
     var paramsArr = window.location.search.replace('?','').split('&');
+    //URLSearchParams - Dive into this
     var params = {};
     paramsArr.forEach((item) => {
       var equal = item.indexOf('=');
@@ -53,7 +54,7 @@ class App extends React.Component {
         },
         streetViewControl: false
     });
-    var centerMarker = new google.maps.Marker({position: centerPoint, map:map});
+    var centerMarker = new google.maps.Marker({position: centerPoint, map: map});
   }
   getShopAndEatMarkers(){
     axios.get(`/map/yelp`,{params:{
