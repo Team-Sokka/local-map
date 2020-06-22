@@ -150,11 +150,14 @@ class App extends React.Component {
 //Styled Components
 const MapModuleContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
 `
 const IndividualMapContainer = styled.div`
+  max-width: 250px;
   min-width: 200px;
+  flex: 1;
+  padding:10px
 `
 const MapTile = styled.div`
   background-color: blue;
