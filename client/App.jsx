@@ -101,24 +101,24 @@ class App extends React.Component {
        <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
-          <div className="individual-map-tile"></div>
+          <MapTile></MapTile>
           <h1>Basic Map</h1>
           <p>Details</p>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
-          <div className="individual-map-tile"></div>
+          <MapTile></MapTile>
             <h1>Shop & Eat</h1>
             <p>Details</p>
         </IndividualMapContainer>
 
         <IndividualMapContainer onClick={this.streetView.bind(this)}>
-          <div className="individual-map-tile" ></div>
+          <MapTile></MapTile>
             <h1>Street View</h1>
             <p>Details</p>
 
         </IndividualMapContainer>
         <IndividualMapContainer>
-          <div className="individual-map-tile"></div>
+          <MapTile></MapTile>
             <h1>Map 2</h1>
             <p>Details</p>
         </IndividualMapContainer>
@@ -137,6 +137,16 @@ const MapModuleContainer = styled.div`
 
 const IndividualMapContainer = styled.div`
   min-width: 200px;
+`
+
+const MapTile = styled.div`
+  background-color: blue;
+  border-radius: 6px;
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D');
+  background-repeat: no-repeat;
+  background-position: center;
+  height:104px;
+  background-size: 100%;
 `
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
