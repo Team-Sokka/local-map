@@ -15,6 +15,10 @@ class App extends React.Component {
       location: {},
       currentMapView: {
         basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: false,
       },
     }
@@ -79,6 +83,10 @@ class App extends React.Component {
     this.setState({
       currentMapView:{
         basic: true,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: false,
       }
     })
@@ -95,6 +103,10 @@ class App extends React.Component {
     this.setState({
       currentMapView:{
         basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: true,
       }
     })
@@ -102,18 +114,59 @@ class App extends React.Component {
     if (this.state.modalVisible) this.toggleModal()
   }
   streetViewMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: true,
+        schools: false,
+        crime: false,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
+
     //this.toggleModal();
-    this.basicMap();
     //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
   }
   schoolsMap(){
-    this.basicMap();
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: true,
+        crime: false,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
   }
   crimeMap(){
-    this.basicMap();
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: false,
+        crime: true,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
   }
   commuteMap(){
-    this.basicMap();
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: true,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
