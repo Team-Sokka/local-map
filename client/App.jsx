@@ -104,8 +104,8 @@ class App extends React.Component {
     if (this.state.modalVisible) this.toggleModal()
   }
   streetView(){
-    this.toggleModal();
-    var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
+    //this.toggleModal();
+    //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
@@ -118,26 +118,39 @@ class App extends React.Component {
        <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
-          <MapTile></MapTile>
-          <h1>Basic Map</h1>
-          <p>Explore the area</p>
-        </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
-          <MapTile></MapTile>
-            <h1>Shop & Eat</h1>
-            <p>See all the restaurants!</p>
-        </IndividualMapContainer>
+          <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
 
+          <MapTitle>Map View</MapTitle>
+          <MapSubTitle>Explore the area</MapSubTitle>
+        </IndividualMapContainer>
         <IndividualMapContainer onClick={this.streetView.bind(this)}>
-          <MapTile></MapTile>
-            <h1>Street View</h1>
-            <p>Take a virtual walk around the neighborhood</p>
-
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
+            <MapTitle>Street View</MapTitle>
+            <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer>
-          <MapTile></MapTile>
-            <h1>Schools</h1>
-            <p>Schools in the area</p>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/schools.svg'}></MapTile>
+            <MapTitle>Schools</MapTitle>
+            <MapSubTitle>1 Elementary School</MapSubTitle>
+            <MapSubTitle>1 Middle School</MapSubTitle>
+            <MapSubTitle>1 High School</MapSubTitle>
+        </IndividualMapContainer>
+        <IndividualMapContainer>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
+            <MapTitle>Crime</MapTitle>
+            <MapSubTitle>Lowest crime relative to the rest of the area</MapSubTitle>
+        </IndividualMapContainer>
+
+        <IndividualMapContainer>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/commute.svg'}></MapTile>
+            <MapTitle>Commute</MapTitle>
+            <MapSubTitle>96% of residents commute by car</MapSubTitle>
+        </IndividualMapContainer>
+        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
+            <MapTitle>Shop & Eat</MapTitle>
+            <MapSubTitle>See all the restaurants!</MapSubTitle>
+
         </IndividualMapContainer>
       </MapModuleContainer>
 
@@ -150,20 +163,33 @@ class App extends React.Component {
 //Styled Components
 const MapModuleContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
-`
+`;
 const IndividualMapContainer = styled.div`
-  min-width: 200px;
-`
+  max-width: 150px;
+  min-width: 100px;
+  flex: 1;
+  padding:10px
+`;
+
 const MapTile = styled.div`
-  background-color: blue;
-  border-radius: 6px;
-  background-image: url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D');
+border-radius: 6px;
+  background-image: ${props => props.img? `url(${props.img})` : `url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D')` };
   background-repeat: no-repeat;
   background-position: center;
   height:104px;
   background-size: 100%;
-`
+`;
+const MapTitle = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+`;
+const MapSubTitle = styled.div`
+color: rgb(134, 144, 153);
+font-size: 14px;
+line-height: 1.43;
+`;
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
