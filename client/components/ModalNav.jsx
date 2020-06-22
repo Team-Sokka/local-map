@@ -5,10 +5,14 @@ const ModalNav = (props) => (
   <Wrapper>
     <div>
     <Button active={props.currentMapView.basic} onClick={props.mapToggles.basicMap}>Map</Button>
-    <Button active={props.currentMapView.shopAndEat} onClick={props.mapToggles.shopAndEat}>Shop & Eat</Button>
+    <Button active={false}>Street View</Button>
     <Button active={false}>Schools</Button>
     <Button active={false}>Crime</Button>
-    <Button active={false}>Street View</Button>
+    <Button active={false}>Commute</Button>
+    <Button active={props.currentMapView.shopAndEat} onClick={props.mapToggles.shopAndEat}>Shop & Eat</Button>
+
+
+
     </div>
 
     <div>
@@ -28,7 +32,7 @@ const ModalNav = (props) => (
 //Styled Components
 const Wrapper = styled.div`
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content:space-between;
   max-width: inherit;
   box-sizing: border-box;
@@ -38,7 +42,7 @@ const Wrapper = styled.div`
   position: relative;
   border-radius: 5px;
   flex-direction: row;
-  padding: 10px
+  padding: 0px 0px
 `;
 
 const Button = styled.button `
