@@ -16,7 +16,7 @@ const Modal = (props) => (
 </ModalContainer>
 
 )
-
+//Styled Components
 const ModalContainer = styled.div`
   height: 80vh;
   width: 90%;
