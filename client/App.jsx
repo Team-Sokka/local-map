@@ -104,8 +104,8 @@ class App extends React.Component {
     if (this.state.modalVisible) this.toggleModal()
   }
   streetView(){
-    this.toggleModal();
-    var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
+    //this.toggleModal();
+    //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
@@ -118,26 +118,36 @@ class App extends React.Component {
        <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
-          <MapTile></MapTile>
-          <h1>Basic Map</h1>
+          <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
+          <h3>Map View</h3>
           <p>Explore the area</p>
         </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
-          <MapTile></MapTile>
-            <h1>Shop & Eat</h1>
-            <p>See all the restaurants!</p>
-        </IndividualMapContainer>
-
         <IndividualMapContainer onClick={this.streetView.bind(this)}>
-          <MapTile></MapTile>
-            <h1>Street View</h1>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
+            <h3>Street View</h3>
             <p>Take a virtual walk around the neighborhood</p>
 
         </IndividualMapContainer>
         <IndividualMapContainer>
-          <MapTile></MapTile>
-            <h1>Schools</h1>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/schools.svg'}></MapTile>
+            <h3>Schools</h3>
             <p>Schools in the area</p>
+        </IndividualMapContainer>
+        <IndividualMapContainer>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
+            <h3>Crime</h3>
+            <p>Text</p>
+        </IndividualMapContainer>
+
+        <IndividualMapContainer>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/commute.svg'}></MapTile>
+            <h3>Commute</h3>
+            <p>Text</p>
+        </IndividualMapContainer>
+        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
+          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
+            <h3>Shop & Eat</h3>
+            <p>See all the restaurants!</p>
         </IndividualMapContainer>
       </MapModuleContainer>
 
@@ -154,15 +164,15 @@ const MapModuleContainer = styled.div`
   width: 100%;
 `
 const IndividualMapContainer = styled.div`
-  max-width: 250px;
-  min-width: 200px;
+  max-width: 150px;
+  min-width: 100px;
   flex: 1;
   padding:10px
 `
+//https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D
 const MapTile = styled.div`
-  background-color: blue;
-  border-radius: 6px;
-  background-image: url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D');
+border-radius: 6px;
+  background-image: ${props => props.img? `url(${props.img})` : `url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D')` };
   background-repeat: no-repeat;
   background-position: center;
   height:104px;
