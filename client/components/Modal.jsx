@@ -8,7 +8,7 @@ import YelpList from './YelpList.jsx';
 const Modal = (props) => (
 
 <ModalContainer hide={props.modalVisible}>
-  <ModalNav closeModal={props.closeModal}/>
+  <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView}/>
   {/* <YelpList /> */}
   <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
 

@@ -61,9 +61,10 @@ const CloseButton = styled(Button)`
 const ModalNav = (props) => (
   <Wrapper>
     <div>
+      {console.log('Curr map views - ', props)}
     {/* <ActiveButton>Map</ActiveButton> */}
-    <Button active={true}>Map</Button>
-    <Button active={false}>Street View</Button>
+    <Button active={props.currentMapView.basic}>Map</Button>
+    <Button active={props.currentMapView.shopAndEat}>Street View</Button>
     <Button active={false}>Schools</Button>
     <Button active={false}>Crime</Button>
     <Button active={false}>Shop & Eat</Button>

@@ -12,7 +12,11 @@ class App extends React.Component {
       modalVisible: true,
       currentHouse: {},
       shopAndEatMarkers: [],
-      location: {}
+      location: {},
+      currentMapView: {
+        basic: false,
+        shopAndEat: false,
+      },
     }
   }
   componentDidMount(){
@@ -73,6 +77,12 @@ class App extends React.Component {
     })
   }
   basicMap(){
+    this.setState({
+      currentMapView:{
+        basic: true,
+        shopAndEat: false,
+      }
+    })
     this.clearAllMarkers();
     this.toggleModal();
   }
@@ -83,6 +93,12 @@ class App extends React.Component {
     });
   }
   shopAndEatMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        shopAndEat: true,
+      }
+    })
     this.getShopAndEatMarkers();
     this.toggleModal();
   }
@@ -98,7 +114,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} modalVisible={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile></MapTile>
