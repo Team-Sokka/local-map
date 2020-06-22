@@ -55,6 +55,9 @@ transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s
 &:hover{
   background-color: rgb(239,239,239);
 }
+&:focus{
+  outline-color: rgb(239,239,239);
+}
 `
 
 const RightButton = styled(Button)`
