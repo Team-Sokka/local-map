@@ -119,35 +119,38 @@ class App extends React.Component {
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
-          <h3>Map View</h3>
-          <p>Explore the area</p>
+
+          <MapTitle>Map View</MapTitle>
+          <MapSubTitle>Explore the area</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.streetView.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
-            <h3>Street View</h3>
-            <p>Take a virtual walk around the neighborhood</p>
-
+            <MapTitle>Street View</MapTitle>
+            <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/schools.svg'}></MapTile>
-            <h3>Schools</h3>
-            <p>Schools in the area</p>
+            <MapTitle>Schools</MapTitle>
+            <MapSubTitle>1 Elementary School</MapSubTitle>
+            <MapSubTitle>1 Middle School</MapSubTitle>
+            <MapSubTitle>1 High School</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
-            <h3>Crime</h3>
-            <p>Text</p>
+            <MapTitle>Crime</MapTitle>
+            <MapSubTitle>Lowest crime relative to the rest of the area</MapSubTitle>
         </IndividualMapContainer>
 
         <IndividualMapContainer>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/commute.svg'}></MapTile>
-            <h3>Commute</h3>
-            <p>Text</p>
+            <MapTitle>Commute</MapTitle>
+            <MapSubTitle>96% of residents commute by car</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
-            <h3>Shop & Eat</h3>
-            <p>See all the restaurants!</p>
+            <MapTitle>Shop & Eat</MapTitle>
+            <MapSubTitle>See all the restaurants!</MapSubTitle>
+
         </IndividualMapContainer>
       </MapModuleContainer>
 
@@ -162,14 +165,14 @@ const MapModuleContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-`
+`;
 const IndividualMapContainer = styled.div`
   max-width: 150px;
   min-width: 100px;
   flex: 1;
   padding:10px
-`
-//https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D
+`;
+
 const MapTile = styled.div`
 border-radius: 6px;
   background-image: ${props => props.img? `url(${props.img})` : `url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D')` };
@@ -177,6 +180,16 @@ border-radius: 6px;
   background-position: center;
   height:104px;
   background-size: 100%;
-`
+`;
+const MapTitle = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+`;
+const MapSubTitle = styled.div`
+color: rgb(134, 144, 153);
+font-size: 14px;
+line-height: 1.43;
+`;
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
