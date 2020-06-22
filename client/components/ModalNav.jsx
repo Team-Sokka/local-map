@@ -15,8 +15,13 @@ const Wrapper = styled.div`
   flex-direction: row;
   padding: 10px
 `;
+
 const Button = styled.button `
-color: rgb(59,65,68);
+color: ${props => props.active? 'rgb(0,120,130)' : 'rgb(59,65,68)'};
+border-color: ${props => props.active? 'rgb(232,233,234)' : 'transparent'};
+box-shadow: ${props => props.active? 'rgba(59, 65, 68, 0.4) 0px 8px 20px -15px':'none'};
+border-style: solid;
+border-width: 1px;
 background-color: transparent;
 border-radius: 8px;
 border-width: 1px;
@@ -27,15 +32,14 @@ line-height: 1.5;
 font-size: 16px;
 font-weight: bold;
 transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
-border-color: transparent;
 &:hover{
   background-color: rgb(239,239,239);
 }
 `
 const ActiveButton = styled(Button)`
-color: rgb(0,120,130);
-border-color: rgb(232,233,234);
-box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;
+color: rgb(0,120,130); //
+border-color: rgb(232,233,234);//
+box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;//
 border-style: solid;
 border-width: 1px;
 `
@@ -57,11 +61,12 @@ const CloseButton = styled(Button)`
 const ModalNav = (props) => (
   <Wrapper>
     <div>
-    <ActiveButton>Map</ActiveButton>
-    <Button>Street View</Button>
-    <Button>Schools</Button>
-    <Button>Crime</Button>
-    <Button>Shop & Eat</Button>
+    {/* <ActiveButton>Map</ActiveButton> */}
+    <Button active={true}>Map</Button>
+    <Button active={false}>Street View</Button>
+    <Button active={false}>Schools</Button>
+    <Button active={false}>Crime</Button>
+    <Button active={false}>Shop & Eat</Button>
     </div>
 
     <div>
