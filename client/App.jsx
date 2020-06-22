@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components'
 import Modal from './components/Modal.jsx';
 
 
@@ -98,33 +99,44 @@ class App extends React.Component {
     return (
       <React.Fragment>
        <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
-      <div className="map-module-container">
-        <div className="individual-map-container" onClick={this.basicMap.bind(this)}>
+      <MapModuleContainer>
+        <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <div className="individual-map-tile"></div>
           <h1>Basic Map</h1>
           <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile" onClick={this.shopAndEatMap.bind(this)}></div>
-          <h1>Shop & Eat</h1>
-          <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile" onClick={this.streetView.bind(this)}></div>
-          <h1>Street View</h1>
-          <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile"></div>
-          <h1>Map 2</h1>
-          <p>Details</p>
-        </div>
-      </div>
+        </IndividualMapContainer>
+        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
+          <div className="individual-map-tile"></div>
+            <h1>Shop & Eat</h1>
+            <p>Details</p>
+        </IndividualMapContainer>
+
+        <IndividualMapContainer onClick={this.streetView.bind(this)}>
+          <div className="individual-map-tile" ></div>
+            <h1>Street View</h1>
+            <p>Details</p>
+
+        </IndividualMapContainer>
+        <IndividualMapContainer>
+          <div className="individual-map-tile"></div>
+            <h1>Map 2</h1>
+            <p>Details</p>
+        </IndividualMapContainer>
+      </MapModuleContainer>
 
       </React.Fragment>
     )
   }
 
 }
+
+const MapModuleContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`
+
+const IndividualMapContainer = styled.div`
+  min-width: 200px;
+`
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
