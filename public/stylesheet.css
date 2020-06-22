@@ -1,3 +1,8 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+
 .map-module-container {
   display: flex;
   justify-content: space-around;
@@ -31,7 +36,8 @@
   margin: auto;
 }
 
-.modal-nav {
+/* Deprecated */
+/* .modal-nav {
 height: 60px;
 width: 100%;
 background-color: rgb(235,235,235);
@@ -42,7 +48,7 @@ display: flex;
 align-items: center;
 justify-content:space-between;
 flex-direction: row;
-}
+} */
 
 #map {
   height: 100%;
