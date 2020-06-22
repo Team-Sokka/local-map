@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import styled from 'styled-components'
 import Modal from './components/Modal.jsx';
 
 
@@ -8,10 +9,14 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      modalVisible: 'hidden',
+      modalVisible: true,
       currentHouse: {},
       shopAndEatMarkers: [],
-      location: {}
+      location: {},
+      currentMapView: {
+        basic: false,
+        shopAndEat: false,
+      },
     }
   }
   componentDidMount(){
@@ -62,7 +67,6 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
-    console.log(data.data.businesses)
     var markers = data.data.businesses.map((business) => {
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
@@ -72,18 +76,32 @@ class App extends React.Component {
     })
   }
   basicMap(){
+    this.setState({
+      currentMapView:{
+        basic: true,
+        shopAndEat: false,
+      }
+    })
     this.clearAllMarkers();
-    this.toggleModal();
+
+    if (this.state.modalVisible) this.toggleModal()
+
   }
   toggleModal(){
-    var modalVisibility = this.state.modalVisible === 'hidden' ? 'visible' : 'hidden';
+    var modalVisibility = this.state.modalVisible ? false : true;
     this.setState({
       modalVisible: modalVisibility,
     });
   }
   shopAndEatMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        shopAndEat: true,
+      }
+    })
     this.getShopAndEatMarkers();
-    this.toggleModal();
+    if (this.state.modalVisible) this.toggleModal()
   }
   streetView(){
     this.toggleModal();
@@ -97,34 +115,55 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
-      <div className="map-module-container">
-        <div className="individual-map-container" onClick={this.basicMap.bind(this)}>
-          <div className="individual-map-tile"></div>
+       <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+      <MapModuleContainer>
+        <IndividualMapContainer onClick={this.basicMap.bind(this)}>
+          <MapTile></MapTile>
           <h1>Basic Map</h1>
-          <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile" onClick={this.shopAndEatMap.bind(this)}></div>
-          <h1>Shop & Eat</h1>
-          <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile" onClick={this.streetView.bind(this)}></div>
-          <h1>Street View</h1>
-          <p>Details</p>
-        </div>
-        <div className="individual-map-container">
-        <div className="individual-map-tile"></div>
-          <h1>Map 2</h1>
-          <p>Details</p>
-        </div>
-      </div>
+          <p>Explore the area</p>
+        </IndividualMapContainer>
+        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
+          <MapTile></MapTile>
+            <h1>Shop & Eat</h1>
+            <p>See all the restaurants!</p>
+        </IndividualMapContainer>
+
+        <IndividualMapContainer onClick={this.streetView.bind(this)}>
+          <MapTile></MapTile>
+            <h1>Street View</h1>
+            <p>Take a virtual walk around the neighborhood</p>
+
+        </IndividualMapContainer>
+        <IndividualMapContainer>
+          <MapTile></MapTile>
+            <h1>Schools</h1>
+            <p>Schools in the area</p>
+        </IndividualMapContainer>
+      </MapModuleContainer>
 
       </React.Fragment>
     )
   }
 
 }
+
+//Styled Components
+const MapModuleContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+`
+const IndividualMapContainer = styled.div`
+  min-width: 200px;
+`
+const MapTile = styled.div`
+  background-color: blue;
+  border-radius: 6px;
+  background-image: url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D');
+  background-repeat: no-repeat;
+  background-position: center;
+  height:104px;
+  background-size: 100%;
+`
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
