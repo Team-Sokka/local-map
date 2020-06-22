@@ -83,9 +83,7 @@ class App extends React.Component {
       }
     })
     this.clearAllMarkers();
-
     if (this.state.modalVisible) this.toggleModal()
-
   }
   toggleModal(){
     var modalVisibility = this.state.modalVisible ? false : true;
@@ -103,9 +101,19 @@ class App extends React.Component {
     this.getShopAndEatMarkers();
     if (this.state.modalVisible) this.toggleModal()
   }
-  streetView(){
+  streetViewMap(){
     //this.toggleModal();
+    this.basicMap();
     //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
+  }
+  schoolsMap(){
+    this.basicMap();
+  }
+  crimeMap(){
+    this.basicMap();
+  }
+  commuteMap(){
+    this.basicMap();
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
@@ -123,7 +131,7 @@ class App extends React.Component {
           <MapTitle>Map View</MapTitle>
           <MapSubTitle>Explore the area</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.streetView.bind(this)}>
+        <IndividualMapContainer onClick={this.streetViewMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
             <MapTitle>Street View</MapTitle>
             <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
