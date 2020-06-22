@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  height: 60px;
+  display: flex;
+  align-items: start;
+  justify-content:space-between;
+  max-width: inherit;
+  box-sizing: border-box;
   width: 100%;
   background-color: rgb(255,255,255);
   margin: 0;
-  position: absolute;
+  position: relative;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
   flex-direction: row;
   padding: 10px
 `;
@@ -50,7 +51,7 @@ const ModalNav = (props) => (
   <Wrapper>
     <div>
     <ActiveButton>Map</ActiveButton>
-    <Button>Street View</Button>
+    <Button active>Street View</Button>
     <Button>Schools</Button>
     <Button>Crime</Button>
     <Button>Shop & Eat</Button>
