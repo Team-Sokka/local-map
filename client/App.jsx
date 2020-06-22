@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      modalVisible: 'hidden',
+      modalVisible: true,
       currentHouse: {},
       shopAndEatMarkers: [],
       location: {}
@@ -77,7 +77,7 @@ class App extends React.Component {
     this.toggleModal();
   }
   toggleModal(){
-    var modalVisibility = this.state.modalVisible === 'hidden' ? 'visible' : 'hidden';
+    var modalVisibility = this.state.modalVisible ? false : true;
     this.setState({
       modalVisible: modalVisibility,
     });
@@ -98,7 +98,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} modalVisibile={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal closeModal={this.toggleModal.bind(this)} modalVisible={this.state.modalVisible} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile></MapTile>
