@@ -133,6 +133,7 @@ class App extends React.Component {
 const MapModuleContainer = styled.div`
   display: flex;
   justify-content: space-around;
+  width: 100%;
 `
 
 const IndividualMapContainer = styled.div`
