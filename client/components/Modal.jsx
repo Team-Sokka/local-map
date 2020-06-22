@@ -9,8 +9,7 @@ const Modal = (props) => (
 
 <ModalContainer hide={props.modalVisible}>
   <ModalNav closeModal={props.closeModal}/>
-  <h1>Modal</h1>
-  <YelpList />
+  {/* <YelpList /> */}
   <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
 
   <StreetView />
@@ -19,7 +18,7 @@ const Modal = (props) => (
 )
 
 const ModalContainer = styled.div`
-  height: 90%;
+  height: 80vh;
   width: 90%;
   z-index: 1000;
   position: absolute;
