@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const ModalNav = (props) => (
   <Wrapper>
     <React.Fragment>
-
       <Button active={props.currentMapView.basic} onClick={props.mapToggles.basicMap}>Map</Button>
       <Button active={false}>Street View</Button>
       <Button active={false}>Schools</Button>
