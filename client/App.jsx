@@ -182,7 +182,7 @@ class App extends React.Component {
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
 
           <MapTitle>Map View</MapTitle>
-          <MapSubTitle>Explore the area</MapSubTitle>
+    <MapSubTitle>Explore the area around {this.state.currentHouse.address? this.state.currentHouse.address.substring(0, this.state.currentHouse.address.indexOf(',')) : ''}</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.streetViewMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
@@ -199,7 +199,7 @@ class App extends React.Component {
         <IndividualMapContainer>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
             <MapTitle>Crime</MapTitle>
-            <MapSubTitle>Lowest crime relative to the rest of the area</MapSubTitle>
+            <MapSubTitle>Lowest crime relative to the rest of Honolulu County</MapSubTitle>
         </IndividualMapContainer>
 
         <IndividualMapContainer>
@@ -210,7 +210,9 @@ class App extends React.Component {
         <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
             <MapTitle>Shop & Eat</MapTitle>
-            <MapSubTitle>See all the restaurants!</MapSubTitle>
+            <MapSubTitle>208 Restaurants</MapSubTitle>
+            <MapSubTitle>21 Groceries</MapSubTitle>
+            <MapSubTitle>50 Nightlife</MapSubTitle>
 
         </IndividualMapContainer>
       </MapModuleContainer>
