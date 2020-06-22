@@ -103,24 +103,24 @@ class App extends React.Component {
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile></MapTile>
           <h1>Basic Map</h1>
-          <p>Details</p>
+          <p>Explore the area</p>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
           <MapTile></MapTile>
             <h1>Shop & Eat</h1>
-            <p>Details</p>
+            <p>See all the restaurants!</p>
         </IndividualMapContainer>
 
         <IndividualMapContainer onClick={this.streetView.bind(this)}>
           <MapTile></MapTile>
             <h1>Street View</h1>
-            <p>Details</p>
+            <p>Take a virtual walk around the neighborhood</p>
 
         </IndividualMapContainer>
         <IndividualMapContainer>
           <MapTile></MapTile>
-            <h1>Map 2</h1>
-            <p>Details</p>
+            <h1>Schools</h1>
+            <p>Schools in the area</p>
         </IndividualMapContainer>
       </MapModuleContainer>
 
