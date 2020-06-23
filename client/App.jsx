@@ -102,6 +102,25 @@ class App extends React.Component {
         }
       }
       var newMarker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
+      var info = new google.maps.InfoWindow({
+        content: `<h3>${business.name}</h3>
+        <p>Rating: ${business.rating}</p>
+        <p>Reviews: ${business.review_count}</p>
+        `,
+        position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}
+      })
+      newMarker.addListener('mouseover', ()=> {
+        info.open(map, newMarker)
+        console.log(business)
+        console.log('Name: ', business.name)
+        console.log('Rating: ', business.rating)
+        console.log('Reviews: ', business.review_count)
+        console.log(`Moused over ${business.name} at lat: ${business.coordinates.latitude} lng: ${business.coordinates.longitude}`)
+        console.log(info);
+      })
+      newMarker.addListener('mouseout', ()=>{
+        info.close();
+      })
       return newMarker;
     })
     this.setState({
