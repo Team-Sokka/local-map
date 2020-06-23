@@ -35,6 +35,12 @@ class App extends React.Component {
       //invoke function to create Map
       this.initializeMap();
       }).catch((err)=>console.log(err))
+    //Add Event Listener
+    document.body.addEventListener('click', (e) =>{
+      console.log('Body Click')
+      console.log(e.target)
+      //this.toggleModal()
+    })
   }
   pullParams(){
     var paramsArr = window.location.search.replace('?','').split('&');
@@ -72,7 +78,7 @@ class App extends React.Component {
     }
   }).then((data) => {
     var markers = data.data.businesses.map((business) => {
-      console.log('Business: ', business)
+      //console.log('Business: ', business)
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
     this.setState({
