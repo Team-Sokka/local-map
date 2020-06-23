@@ -15,6 +15,10 @@ class App extends React.Component {
       location: {},
       currentMapView: {
         basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: false,
       },
     }
@@ -79,13 +83,15 @@ class App extends React.Component {
     this.setState({
       currentMapView:{
         basic: true,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: false,
       }
     })
     this.clearAllMarkers();
-
     if (this.state.modalVisible) this.toggleModal()
-
   }
   toggleModal(){
     var modalVisibility = this.state.modalVisible ? false : true;
@@ -97,15 +103,70 @@ class App extends React.Component {
     this.setState({
       currentMapView:{
         basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: false,
         shopAndEat: true,
       }
     })
     this.getShopAndEatMarkers();
     if (this.state.modalVisible) this.toggleModal()
   }
-  streetView(){
+  streetViewMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: true,
+        schools: false,
+        crime: false,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
+
     //this.toggleModal();
     //var panorama = new google.maps.StreetViewPanorama(document.getElementById('map'),{position: this.state.location, pov: {heading: 54, pitch: 4}});
+  }
+  schoolsMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: true,
+        crime: false,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
+  }
+  crimeMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: false,
+        crime: true,
+        commute: false,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
+  }
+  commuteMap(){
+    this.setState({
+      currentMapView:{
+        basic: false,
+        streetView: false,
+        schools: false,
+        crime: false,
+        commute: true,
+        shopAndEat: false,      }
+    })
+    this.clearAllMarkers();
+    if (this.state.modalVisible) this.toggleModal()
   }
   clearAllMarkers(){
     this.state.shopAndEatMarkers.forEach(marker => {
@@ -115,15 +176,15 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
 
           <MapTitle>Map View</MapTitle>
-          <MapSubTitle>Explore the area</MapSubTitle>
+    <MapSubTitle>Explore the area around {this.state.currentHouse.address? this.state.currentHouse.address.substring(0, this.state.currentHouse.address.indexOf(',')) : ''}</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.streetView.bind(this)}>
+        <IndividualMapContainer onClick={this.streetViewMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
             <MapTitle>Street View</MapTitle>
             <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
@@ -138,7 +199,7 @@ class App extends React.Component {
         <IndividualMapContainer>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
             <MapTitle>Crime</MapTitle>
-            <MapSubTitle>Lowest crime relative to the rest of the area</MapSubTitle>
+            <MapSubTitle>Lowest crime relative to the rest of Honolulu County</MapSubTitle>
         </IndividualMapContainer>
 
         <IndividualMapContainer>
@@ -149,7 +210,9 @@ class App extends React.Component {
         <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
             <MapTitle>Shop & Eat</MapTitle>
-            <MapSubTitle>See all the restaurants!</MapSubTitle>
+            <MapSubTitle>208 Restaurants</MapSubTitle>
+            <MapSubTitle>21 Groceries</MapSubTitle>
+            <MapSubTitle>50 Nightlife</MapSubTitle>
 
         </IndividualMapContainer>
       </MapModuleContainer>
