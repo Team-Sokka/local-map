@@ -31,9 +31,17 @@
     "@babel/preset-react": "^7.10.1",
     "@shelf/jest-mongodb": "^1.1.5",
     "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16.3": "^1.7.2",
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.0.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
+  },
+  "jest":{
+    "verbose": true,
+    "setupFilesAfterEnv": ["./test/jest.setup.js"],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories":["node_modules", "bower_components", "public/dist/"]
   }
 }
