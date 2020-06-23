@@ -17607,17 +17607,18 @@ var allCategories = [
 
 var getCategories = (parentCategory) => {
   //create an array to hold results
-  var categories = [];
+  var categories = {};
   //iterate over the array
     //for each object in the array
       //iterate over it's "parents" array property
         //if one of the item parents array is equal to 'restaurants', push to the result array
   allCategories.forEach((obj)=>{
     if (obj.alias === parentCategory) {
-      categories.push(obj.alias)
+      categories[obj.alias] = obj.alias;
+      //categories.push(obj.alias)
     } else {
       obj.parents.forEach((category)=> {
-        if (category === parentCategory) categories.push(obj.alias)
+        if (category === parentCategory) categories[obj.alias] = obj.alias;
       });
     }
   })
