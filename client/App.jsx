@@ -72,6 +72,7 @@ class App extends React.Component {
     }
   }).then((data) => {
     var markers = data.data.businesses.map((business) => {
+      console.log('Business: ', business)
       return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
     })
     this.setState({
@@ -98,6 +99,11 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
+    if (document.body.style.backgroundColor === 'transparent' || !document.body.style.backgroundColor ) {
+      document.body.style.backgroundColor = 'rgba(10,10,10,0.8)';
+    } else {
+      document.body.style.backgroundColor = 'transparent';
+    }
   }
   shopAndEatMap(){
     this.setState({
