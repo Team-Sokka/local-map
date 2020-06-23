@@ -17627,10 +17627,12 @@ var getCategories = (parentCategory) => {
 }
 //Restaurants, Shopping, ArtsAndEntertainment, Fitness
 
+console.log()
+
 module.exports = {
   all: allCategories,
-  restaurants: getCategories('restaurants'),
-  fitness: getCategories('fitness'),
+  restaurants: Object.assign(getCategories('restaurants'),getCategories('food')),
+  fitness: Object.assign(getCategories('fitness'),getCategories('active')),
   shopping: getCategories('shopping'),
   entertainment: getCategories('arts')
 }
