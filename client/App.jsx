@@ -80,25 +80,29 @@ class App extends React.Component {
   }).then((data) => {
     var markers = data.data.businesses.map((business) => {
       //console.log('Business Categories: ', business.categories) // Array of objects
-      let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
+      let iconMarker = {
+        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',
+      }
+      //let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
       for (var category of business.categories) {
         if (categories.restaurants[category.alias]) {
-          iconMarker = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/RestaurantsDotIcon@2x.png'
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/RestaurantsDotIcon@2x.png'
           break;
         } else if (categories.fitness[category.alias]) {
-          iconMarker = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/FitnessDotIcon@2x.png'
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/FitnessDotIcon@2x.png'
           break;
         } else if (categories.shopping[category.alias]) {
-          iconMarker = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/ShoppingBagDotIcon@2x.png'
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/ShoppingBagDotIcon@2x.png'
           break;
         }else if (categories.entertainment[category.alias]) {
-          iconMarker = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/EntertainmentDotIcon@2x.png'
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/EntertainmentDotIcon@2x.png'
           break;
         } else {
           console.log('Category - ', category)
         }
       }
-      return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
+      var newMarker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
+      return newMarker;
     })
     this.setState({
       shopAndEatMarkers: markers
