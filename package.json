@@ -40,6 +40,8 @@
   },
   "jest":{
     "verbose": true,
-    "setupFilesAfterEnv": ["./test/jest.setup.js"]
+    "setupFilesAfterEnv": ["./test/jest.setup.js"],
+    "moduleFileExtensions": ["js", "jsx"],
+    "moduleDirectories":["node_modules", "bower_components", "public/dist/"]
   }
 }
