@@ -102,21 +102,36 @@ class App extends React.Component {
         }
       }
       var newMarker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
+
+      var ratingImages = {
+        '0': 'https://www.trulia.com/images/txl/icons/yelp/small_0.png',
+        '1': 'https://www.trulia.com/images/txl/icons/yelp/small_1.png',
+        '1.5': 'https://www.trulia.com/images/txl/icons/yelp/small_1_half.png',
+        '2': 'https://www.trulia.com/images/txl/icons/yelp/small_2.png',
+        '2.5': 'https://www.trulia.com/images/txl/icons/yelp/small_2_half.png',
+        '3': 'https://www.trulia.com/images/txl/icons/yelp/small_3.png',
+        '3.5': 'https://www.trulia.com/images/txl/icons/yelp/small_3_half.png',
+        '4': 'https://www.trulia.com/images/txl/icons/yelp/small_4.png',
+        '4.5': 'https://www.trulia.com/images/txl/icons/yelp/small_4_half.png',
+        '5': 'https://www.trulia.com/images/txl/icons/yelp/small_5.png'
+      }
+
       var info = new google.maps.InfoWindow({
         content: `<h3>${business.name}</h3>
-        <p>Rating: ${business.rating}</p>
-        <p>Reviews: ${business.review_count}</p>
+        <p><img src="${business.image_url}" style="height: 50px; width=50px;"/></p>
+        <p><img src="${ratingImages[business.rating]}"/> ${business.review_count} reviews</p>
         `,
         position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}
       })
+
       newMarker.addListener('mouseover', ()=> {
         info.open(map, newMarker)
-        console.log(business)
-        console.log('Name: ', business.name)
-        console.log('Rating: ', business.rating)
-        console.log('Reviews: ', business.review_count)
-        console.log(`Moused over ${business.name} at lat: ${business.coordinates.latitude} lng: ${business.coordinates.longitude}`)
-        console.log(info);
+        //console.log(business)
+        // console.log('Name: ', business.name)
+        // console.log('Rating: ', business.rating)
+        // console.log('Reviews: ', business.review_count)
+        // console.log(`Moused over ${business.name} at lat: ${business.coordinates.latitude} lng: ${business.coordinates.longitude}`)
+        // console.log(info);
       })
       newMarker.addListener('mouseout', ()=>{
         info.close();
