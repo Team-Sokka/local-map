@@ -34,7 +34,8 @@ const NavWrapper = styled.div`
   position: relative;
   border-radius: 5px;
   flex-direction: row;
-  padding: 0px 0px
+  padding: 0px 0px;
+  height: 8%;
 `;
 
 const LeftNavContainer = styled.div`
