@@ -16,7 +16,7 @@ configure({adapter: new Adapter()});
 
 describe('App Component tests', ()=> {
   test('App Component Renders', ()=>{
-    const wrapper = shallow(<App />);
+    const wrapper = mount(<App />);
     expect(wrapper).toBe(true)
   });
 
