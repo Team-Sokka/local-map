@@ -101,8 +101,11 @@ class App extends React.Component {
         } else if (categories.shopping[category.alias]) {
           iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/ShoppingBagDotIcon@2x.png'
           break;
-        }else if (categories.entertainment[category.alias]) {
+        } else if (categories.entertainment[category.alias]) {
           iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/EntertainmentDotIcon@2x.png'
+          break;
+        }  else if (categories.nightlife[category.alias]) {
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/NightLifeDotIcon@2x.png';
           break;
         } else {
           console.log('Category - ', category)
