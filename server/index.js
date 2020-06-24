@@ -8,7 +8,6 @@ const House = require('../database/House.js');
 const externalAPI = require('./externalAPI.js');
 const trulia = require('../database/truliaSeedData.js');
 const app = express()
-const port = process.env.PORT;
 //Middleware
 app.use(morgan('tiny'));
 app.use(helmet())
@@ -51,6 +50,4 @@ app.get('/map/:service', (req, res) => {
   }
 })
 
-app.listen(port, ()=>{
-  console.log(`Listening at http://127.0.0.1:${port}`)
-});
+module.exports = app;
