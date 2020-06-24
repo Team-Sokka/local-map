@@ -80,11 +80,11 @@ class App extends React.Component {
   }).then((data) => {
     console.log('Data - ', data)
       data.data.forEach((category) => {
-        this.createMarkers(category.businesses)
+        this.createShopAndEatMarkers(category.businesses)
       })
     })
   }
-  createMarkers(businessArray){
+  createShopAndEatMarkers(businessArray){
     var markers = businessArray.map((business) => {
       //console.log('Business Categories: ', business.categories) // Array of objects
       let iconMarker = {
