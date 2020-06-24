@@ -335,3 +335,5 @@ line-height: 1.43;
 `;
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
+
+export default App;
