@@ -78,10 +78,17 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
-    var markers = data.data.businesses.map((business) => {
+    console.log('Data - ', data)
+      data.data.forEach((category) => {
+        this.createMarkers(category.businesses)
+      })
+    })
+  }
+  createMarkers(businessArray){
+    var markers = businessArray.map((business) => {
       //console.log('Business Categories: ', business.categories) // Array of objects
       let iconMarker = {
-        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',
+        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png'
       }
       //let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
       for (var category of business.categories) {
@@ -139,9 +146,8 @@ class App extends React.Component {
       return newMarker;
     })
     this.setState({
-      shopAndEatMarkers: markers
+      shopAndEatMarkers: this.state.shopAndEatMarkers.concat(markers)
       })
-    })
   }
   basicMap(){
     this.setState({
