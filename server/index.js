@@ -39,13 +39,13 @@ app.get('/map/:service', (req, res) => {
   if (categories) {
     externalAPI[req.params.service](lat, lng, categories)
     .then(data => {
-      res.json(data.data)
+      res.json(data)
     })
     .catch(() => res.send(`${req.params.service} request failed`));
   } else {
     externalAPI[req.params.service](lat, lng)
     .then(data => {
-      res.json(data.data)
+      res.json(data)
     })
     .catch(() => res.send(`${req.params.service} request failed`));
   }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components'
 import Modal from './components/Modal.jsx';
+import categories from '../database/yelpcategories.js'
 
 
 class App extends React.Component {
@@ -37,8 +38,8 @@ class App extends React.Component {
       }).catch((err)=>console.log(err))
     //Add Event Listener
     document.body.addEventListener('click', (e) =>{
-      console.log('Body Click')
-      console.log(e.target)
+      //console.log('Body Click')
+      //console.log(e.target)
       //this.toggleModal()
     })
   }
@@ -77,14 +78,76 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
-    var markers = data.data.businesses.map((business) => {
-      //console.log('Business: ', business)
-      return new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon:'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',  map: window.map})
-    })
-    this.setState({
-      shopAndEatMarkers: markers
+    console.log('Data - ', data)
+      data.data.forEach((category) => {
+        this.createShopAndEatMarkers(category.businesses)
       })
     })
+  }
+  createShopAndEatMarkers(businessArray){
+    var markers = businessArray.map((business) => {
+      //console.log('Business Categories: ', business.categories) // Array of objects
+      let iconMarker = {
+        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png'
+      }
+      //let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
+      for (var category of business.categories) {
+        if (categories.restaurants[category.alias]) {
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/RestaurantsDotIcon@2x.png'
+          break;
+        } else if (categories.fitness[category.alias]) {
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/FitnessDotIcon@2x.png'
+          break;
+        } else if (categories.shopping[category.alias]) {
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/ShoppingBagDotIcon@2x.png'
+          break;
+        }else if (categories.entertainment[category.alias]) {
+          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/EntertainmentDotIcon@2x.png'
+          break;
+        } else {
+          console.log('Category - ', category)
+        }
+      }
+      var newMarker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
+
+      var ratingImages = {
+        '0': 'https://www.trulia.com/images/txl/icons/yelp/small_0.png',
+        '1': 'https://www.trulia.com/images/txl/icons/yelp/small_1.png',
+        '1.5': 'https://www.trulia.com/images/txl/icons/yelp/small_1_half.png',
+        '2': 'https://www.trulia.com/images/txl/icons/yelp/small_2.png',
+        '2.5': 'https://www.trulia.com/images/txl/icons/yelp/small_2_half.png',
+        '3': 'https://www.trulia.com/images/txl/icons/yelp/small_3.png',
+        '3.5': 'https://www.trulia.com/images/txl/icons/yelp/small_3_half.png',
+        '4': 'https://www.trulia.com/images/txl/icons/yelp/small_4.png',
+        '4.5': 'https://www.trulia.com/images/txl/icons/yelp/small_4_half.png',
+        '5': 'https://www.trulia.com/images/txl/icons/yelp/small_5.png'
+      }
+
+      var info = new google.maps.InfoWindow({
+        content: `<h3>${business.name}</h3>
+        <p><img src="${business.image_url}" style="height: 50px; width=50px;"/></p>
+        <p><img src="${ratingImages[business.rating]}"/> ${business.review_count} reviews</p>
+        `,
+        position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}
+      })
+
+      newMarker.addListener('mouseover', ()=> {
+        info.open(map, newMarker)
+        //console.log(business)
+        // console.log('Name: ', business.name)
+        // console.log('Rating: ', business.rating)
+        // console.log('Reviews: ', business.review_count)
+        // console.log(`Moused over ${business.name} at lat: ${business.coordinates.latitude} lng: ${business.coordinates.longitude}`)
+        // console.log(info);
+      })
+      newMarker.addListener('mouseout', ()=>{
+        info.close();
+      })
+      return newMarker;
+    })
+    this.setState({
+      shopAndEatMarkers: this.state.shopAndEatMarkers.concat(markers)
+      })
   }
   basicMap(){
     this.setState({
