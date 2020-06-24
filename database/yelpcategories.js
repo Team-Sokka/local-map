@@ -17626,9 +17626,6 @@ var getCategories = (parentCategory) => {
   return categories;
 }
 //Restaurants, Shopping, ArtsAndEntertainment, Fitness
-
-console.log()
-
 module.exports = {
   all: allCategories,
   restaurants: Object.assign(getCategories('restaurants'),getCategories('food')),
