@@ -88,7 +88,8 @@ class App extends React.Component {
     var markers = businessArray.map((business) => {
       //console.log('Business Categories: ', business.categories) // Array of objects
       let iconMarker = {
-        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png'
+        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',
+        scaledSize: new google.maps.Size(30,30)
       }
       //let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
       for (var category of business.categories) {
