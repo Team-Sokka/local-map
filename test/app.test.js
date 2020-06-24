@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import {configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
