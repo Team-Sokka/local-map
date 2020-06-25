@@ -23,7 +23,7 @@ position: absolute;
 z-index: 500;
 margin-left: 68%;
 margin-top 10px;
-border-radius: 5px;
+border-radius: 8px;
 visibility: ${props => {
   if (props.styling.commute || props.styling.crime || props.styling.schools || props.styling.shopAndEat ) {
     return 'visible'

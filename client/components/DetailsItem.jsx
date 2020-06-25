@@ -68,6 +68,7 @@ background-image: url(${props => props.src});
 background-repeat: no-repeat;
 background-size: contain;
 height: 50px;
+border-radius: 8px;
 `
 const ReviewsAndRating = styled.div`
 font-size: 12px;
