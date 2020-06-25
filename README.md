@@ -18,12 +18,12 @@
 1. [Development](#development)
 1. [React Component Breakdown](#React-Component-Breakdown)
     * [App](#App)
-  * [Modal](#)
-  - [ModalNav](#)
-  - [Details](#)
-  - [DetialsItem](#)
-  - [Map](#)
-  - [StreetView](#)
+    * [Modal](#)
+    - [ModalNav](#)
+    - [Details](#)
+    - [DetialsItem](#)
+    - [Map](#)
+    - [StreetView](#)
 1. [Server Methods](#)
 
 ## Usage
