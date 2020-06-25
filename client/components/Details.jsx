@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import DetailsItem from './DetailsItem.jsx'
 
 const Details = (props) => (
+  <FlexContainer>
   <DetailContainer styling={props.styling} hide={props.hide}>
     <TitleContainer>
       <MainTitle>
@@ -18,8 +19,16 @@ const Details = (props) => (
     })}
     </ContentContainer>
   </DetailContainer>
+  </FlexContainer>
 )
-//padding-left: 2px; margin-bottom: 4px
+
+const FlexContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding-right: 10px;
+`
+
 
 const DetailContainer = styled.div`
 height: 88%;
@@ -28,7 +37,6 @@ max-width: 300px;
 background-color: white;
 position: absolute;
 z-index: 500;
-margin-left: 68%;
 margin-top 10px;
 border-radius: 8px;
 border-color: rgb(232, 233, 234);
