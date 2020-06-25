@@ -3,6 +3,8 @@
 > local map is intended to replicate Trulia's map module on their item page. local map currently has two distinct views:
 > 1. Basic map with a marker
 > 1. Map with markers of local businesses (restaurants, fitness centers, parks, etc.)
+> Trulia Page module being replicated:
+> ![Image of Trulia Page](https://lh4.googleusercontent.com/9C9iZSYzfH9CDFb1cpZMx8E75pG8DSx5ZrCPuiQ15z0KaDA4cyG1a0pZLjSJ23AMfCDtg_wOWP11xWthP1eMMmnqBIFOuZavPeL-bGQH4G-QUZCRh6mVs5azW-oMVw4rQIftGU_R)
 
 ## Table of Contents
 
