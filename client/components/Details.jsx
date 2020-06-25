@@ -32,8 +32,7 @@ padding-right: 10px;
 
 const DetailContainer = styled.div`
 height: 88%;
-width: 30%;
-max-width: 300px;
+width: 332px;
 background-color: white;
 position: absolute;
 z-index: 500;
