@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import ModalNav from './ModalNav.jsx';
 import Map from './Map.jsx';
 import StreetView from './StreetView.jsx';
-import YelpList from './YelpList.jsx';
+import Details from './Details.jsx';
 
 const Modal = (props) => (
 
 <ModalContainer hide={props.modalVisible}>
   <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
-  {/* <YelpList /> */}
-  <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
-  <StreetView />
+    <Details hide={props.modalVisible} styling={props.currentMapView}/>
+    <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
+    <StreetView />
+
 </ModalContainer>
 
 )
@@ -30,7 +31,12 @@ const ModalContainer = styled.div`
   border-radius: 5px;
   margin: auto;
   visibility: ${props => props.hide? 'hidden': 'visible'};
-
+`
+const MapContainer = styled.div`
+display: flex;
+position: relative;
+flex-direction: column;
+flex: 1 1 0%;
 `
 
 export default Modal;

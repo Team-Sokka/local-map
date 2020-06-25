@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       modalVisible: true,
       currentHouse: {},
+      currentPlaces: [],
       shopAndEatMarkers: [],
       location: {},
       currentMapView: {
@@ -78,11 +79,16 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
-    console.log('Data - ', data)
+    //console.log('Data - ', data)
+      var places = [];
       data.data.forEach((category) => {
         this.createShopAndEatMarkers(category.businesses)
+        places = places.concat(category.businesses)
       })
-    })
+      this.setState({
+        currentPlaces: places
+      })
+    }).then(()=> console.log(this.state))
   }
   createShopAndEatMarkers(businessArray){
     var markers = businessArray.map((business) => {
