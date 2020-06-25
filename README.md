@@ -27,7 +27,7 @@
 1. [Server Methods](#Server-Methods)
     * [Root](#root)
     * [Seed Data](#seed-data)
-    * [/seed](#seed-data)
+    * [/seed](#/seed)
     * [Find House by ID](#find-house-by-id)
     * [Find Markers via an external API](#Find-Markers-via-an-external-API)
 
@@ -259,6 +259,8 @@ npm install
 ### Root
 
 ### Seed Data
+
+### /seed
 
 ### Find House by ID
 
