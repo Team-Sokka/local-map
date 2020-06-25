@@ -15,13 +15,14 @@ const Details = (props) => (
 )
 
 const DetailContainer = styled.div`
-height: 70%;
+height: 88%;
 width: 30%;
+max-width: 300px;
 background-color: white;
 position: absolute;
 z-index: 500;
 margin-left: 68%;
-margin-top 8%;
+margin-top 10px;
 border-radius: 5px;
 visibility: ${props => {
   if (props.styling.commute || props.styling.crime || props.styling.schools || props.styling.shopAndEat ) {
