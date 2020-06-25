@@ -25,10 +25,10 @@
     * [Map](#Map)
     * [StreetView](#StreetView)
 1. [Server Methods](#Server-Methods)
-    * [/] (#/)
-    * [/seed] (#/seed)
-    * [/house/:id] (#/house/:id)
-    * [/map/:service] (#/map/:service)
+    * [\/] (#/)
+    * [\/seed] (#/seed)
+    * [\/house\/:id] (#/house/:id)
+    * [\/map\/:service] (#/map/:service)
 
 ## Usage
 
