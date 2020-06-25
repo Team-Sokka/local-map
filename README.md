@@ -42,17 +42,17 @@ npm install
 
 # React Component Breakdown
 
-##App - Holds all other components
-###Child React Components
+## App - Holds all other components
+### Child React Components
   - Modal
-###Styled Components
+### Styled Components
   - MapModuleContainer - Parent Container of all IndividualMapContainers
   - InvidividualMapContainer - container
   - MapTile - img
   - MapTitle - text
   - MapSubtitle - Text’
 
-###State
+### State
   - modalVisible - boolean on whether the modal should be hidden. t
   - currentHouse - object to hold information about the current house
   - currentPlaces - Array of all the ‘places’ being displayed on the map from external API’s
@@ -66,7 +66,7 @@ npm install
     - commute
     - shopAndEat
 
-###Methods
+### Methods
   - componentDidMount()
     - Invoked when component mounts
     - Invokes pullParams() and assigns to a ‘params’ var
@@ -138,5 +138,68 @@ npm install
       - This removes the marker from the map
 
 
-###
--
+## Modal Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
+
+## ModalNav Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
+
+## Details Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
+
+## DetailsItem Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
+
+## Map Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
+
+## StreetView Component
+
+### Child React Components
+
+### Styled Components
+
+### State
+
+### Methods
+
