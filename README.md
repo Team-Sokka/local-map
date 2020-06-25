@@ -16,7 +16,7 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-1. [React Component Breakdown](#React Component Breakdown)
+1. [React Component Breakdown](#React-Component-Breakdown)
   - [App](#App)
   - [Modal](#)
   - [ModalNav](#)
