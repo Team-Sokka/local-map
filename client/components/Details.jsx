@@ -4,7 +4,14 @@ import DetailsItem from './DetailsItem.jsx'
 
 const Details = (props) => (
   <DetailContainer styling={props.styling} hide={props.hide}>
-    <TitleContainer><h2>Highlights</h2></TitleContainer>
+    <TitleContainer>
+      <MainTitle>
+        Shop & Eat
+        </MainTitle>
+        <SubTitle>
+          Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40p", "margin-bottom": "4px", "padding-left": "2px"}}/>
+        </SubTitle>
+      </TitleContainer>
     <ContentContainer>
     {props.places.map((business, key) => {
       return <DetailsItem business={business} key={key}/>
@@ -12,6 +19,7 @@ const Details = (props) => (
     </ContentContainer>
   </DetailContainer>
 )
+//padding-left: 2px; margin-bottom: 4px
 
 const DetailContainer = styled.div`
 height: 88%;
@@ -34,8 +42,21 @@ visibility: ${props => {
   }
 }}
 `
+//margin-bottom: 4px" //img
 const TitleContainer = styled.div`
-text-align: center
+text-align: left;
+`
+const MainTitle = styled.div`
+padding: 5px;
+font-size: 20px;
+font-weight: bold;
+`
+
+const SubTitle = styled.div`
+padding: 2px 2px 5px 5px;
+font-size: 12px;
+align-items: center;
+display: flex;
 `
 
 const ContentContainer = styled.div`
