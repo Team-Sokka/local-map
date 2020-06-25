@@ -1,32 +1,44 @@
-# Project Name
+# Local Map
+##### A replication of the map module on Trulia's individual House Page
 
-> Project description
-
-## Related Projects
-### Proxy Projects
-  - https://github.com/Team-Sokka/proxy-local-map
-  - https://github.com/Team-Sokka/Proxy-Listings-Carousel
-  - https://github.com/Team-Sokka/Proxy-Image-Gallery
-### Non-Proxy
-  - https://github.com/Team-Sokka/Image-Gallery
-  - https://github.com/Team-Sokka/Listings-Carousel
+> local map is intended to replicate Trulia's map module on their item page. local map currently has two distinct views:
+> 1. Basic map with a marker
+> 1. Map with markers of local businesses (restaurants, fitness centers, parks, etc.)
+>
+> Trulia Page module being replicated:
+>
+>![Image of Module Before Opening](https://lh3.googleusercontent.com/Ey-yFtdjy0cwi0IK-QbM4Iu-y6adEqKAOf2FmLd8fuHADgRLPQFZM3tJyoG8eHDO5KXUVj3pPmyWlKuhzED39nVZeJD1NEkz_FccqgwzG_7quDg2FcaVMvdZrN8q7UdeaOjkPJ6v)
+>
+> ![Image of Module opened on Shop and Eat view](https://lh4.googleusercontent.com/9C9iZSYzfH9CDFb1cpZMx8E75pG8DSx5ZrCPuiQ15z0KaDA4cyG1a0pZLjSJ23AMfCDtg_wOWP11xWthP1eMMmnqBIFOuZavPeL-bGQH4G-QUZCRh6mVs5azW-oMVw4rQIftGU_R)
 
 ## Table of Contents
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
+1. [React Component Breakdown](#React-Component-Breakdown)
+    * [App](#App)
+    * [Modal](#Modal)
+    * [ModalNav](#ModalNav)
+    * [Details](#Details)
+    * [DetialsItem](#DetailsItem)
+    * [Map](#Map)
+    * [StreetView](#StreetView)
+1. [Server Endpoints](#Server-Endpoints)
+    * [/](#root---)
+    * [/seed](#seed)
+    * [/house/:id](#houseid)
+    * [/map/:service](#mapservice)
+1. [Related Projects](#related-projects)
+    * [Proxy Projects](#proxy-projects)
+    * [Non Proxy Projects](#non-proxy-projects)
 
 ## Usage
 
-> Some usage instructions
+> This module is intended to be used in tandem with other modules for a wholistic experience. Please use with the listings carousel and image gallery related projects.
 
 ## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node >6.13.0
 
 ## Development
 
@@ -35,14 +47,13 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
 
 # React Component Breakdown
 
-## App - Holds all other components
+## App
 ### Child React Components
   - Modal
 ### Styled Components
@@ -238,3 +249,39 @@ npm install
   - N/A
 ### Methods
   - N/A
+
+## Server Endpoints
+
+### Root - /
+  - Expects a GET Request
+  - Responds with the index.html file
+
+### /seed
+  - Expects a GET Request
+  - Responds with the data used to seed the database
+  - Useful for testing. Not meant for production.
+
+### /house/:id
+  - Expects a GET Request
+  - Required Parameters: id
+  - Repsonds with the House document with the corresponding house id
+
+### /map/:service
+  - Expects a GET Request
+  - Required Parameters: service
+    - ex: yelp
+  - Body of the request:
+    - lat (required) - latitude for the location to look around
+    - lng (required) - longitude for the location to look around
+    - categories (optional) - this will override the default categories of 'restaurants, shopping, arts, fitness'
+  - Responds with JSON data from the specified service.
+    - Ex: a request with yelp specified as the service will return with JSON data about the surrounding businesses.
+
+## Related Projects
+### Proxy Projects
+  - https://github.com/Team-Sokka/proxy-local-map
+  - https://github.com/Team-Sokka/Proxy-Listings-Carousel
+  - https://github.com/Team-Sokka/Proxy-Image-Gallery
+### Non-Proxy Projects
+  - https://github.com/Team-Sokka/Image-Gallery
+  - https://github.com/Team-Sokka/Listings-Carousel
