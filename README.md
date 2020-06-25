@@ -3,11 +3,11 @@
 > Project description
 
 ## Related Projects
-###Proxy Projects
+### Proxy Projects
   - https://github.com/Team-Sokka/proxy-local-map
   - https://github.com/Team-Sokka/Proxy-Listings-Carousel
   - https://github.com/Team-Sokka/Proxy-Image-Gallery
-###Non-Proxy
+### Non-Proxy
   - https://github.com/Team-Sokka/Image-Gallery
   - https://github.com/Team-Sokka/Listings-Carousel
 
@@ -141,65 +141,100 @@ npm install
 ## Modal Component
 
 ### Child React Components
+  - ModalNav
+  - Map
+  - StreetView
 
 ### Styled Components
+ - FlexContainer
+  - Creates a new flexbox for the ModalContainer to reside in
+  - Allows for more flexibility, including:
+    - Centering the Modal and it’s content
+    - Creating a blurred backdrop for the modal when it is open
+  - ModalContainer
+    - Positions the modal on top of everything else, and controls visibility of the modal
+  - MapContainer
+    - Creates a flex box around the map to aid in styling
 
 ### State
+  - N/A - Stateless Component
 
 ### Methods
-
+  - N/A
 
 ## ModalNav Component
 
 ### Child React Components
-
+  - None
 ### Styled Components
+  - NavWrapper
+  - LeftNavContainer
+  - RightNavContainer
+  - Button
+  - RightButton
+  - CloseButton
 
 ### State
+  - N/A - Stateless Component
 
 ### Methods
-
+  - N/A
 
 ## Details Component
 
 ### Child React Components
+  - DetailsItem
 
 ### Styled Components
+  - TitleContainer
+  - MainTitle
+  - SubTitle
+  - ContentContainer
 
 ### State
-
+  - N/A
 ### Methods
-
+  - N/A
 
 ## DetailsItem Component
 
 ### Child React Components
-
+  - N/A
 ### Styled Components
+  - ItemContainer
+  - LeftContainer
+  - RightContainer
+  - ItemTitle
+  - ItemSubtitle
+  - ItemContent
+  - BusinessImage
+  - ReviewsAndRating
 
 ### State
-
+  - N/A - Stateless Component
 ### Methods
 
 
 ## Map Component
 
 ### Child React Components
-
+  - N/A
 ### Styled Components
-
+  - N/A
 ### State
-
+  - N/A - Stateless Component
 ### Methods
+  - N/A
 
 
 ## StreetView Component
+**Does not currently display in application**
 
 ### Child React Components
-
+  - N/A
 ### Styled Components
-
+  - N/A
 ### State
-
+  - N/A
 ### Methods
-
+  - N/A
