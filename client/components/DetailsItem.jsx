@@ -9,7 +9,7 @@ const DetailsItem = (props) => (
   <RightContainer>
     <ItemTitle>
       {props.business.name}
-      {console.log(props.business)}
+      {/* {console.log(props.business)} */}
     </ItemTitle>
     <ItemSubtitle>
       {props.business.categories[0].title}
@@ -50,11 +50,12 @@ flex:1
 `
 
 const RightContainer = styled.div`
-flex: 4
+flex: 4;
 padding: 5px;
 `
 
 const ItemTitle = styled.div`
+color: rgb(59, 65, 68);
 `
 const ItemSubtitle = styled.div`
 font-size: 14px;

@@ -3,10 +3,9 @@ import styled from 'styled-components'
 import DetailsItem from './DetailsItem.jsx'
 
 const Details = (props) => (
-  <DetailContainer styling={props.styling}>
+  <DetailContainer styling={props.styling} hide={props.hide}>
     <TitleContainer><h2>Highlights</h2></TitleContainer>
     <ContentContainer>
-    {console.log(props)}
     {props.places.map((business, key) => {
       return <DetailsItem business={business} key={key}/>
     })}
@@ -28,7 +27,7 @@ border-color: rgb(232, 233, 234);
 border-style: solid;
 border-width: 1px;
 visibility: ${props => {
-  if (props.styling.shopAndEat) {
+  if (props.styling.shopAndEat && !props.hide) {
     return 'visible'
   } else {
     return 'hidden'

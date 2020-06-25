@@ -182,6 +182,10 @@ class App extends React.Component {
     } else {
       document.body.style.backgroundColor = 'transparent';
     }
+    this.showState()
+  }
+  showState(){
+    console.log('State - ', this.state)
   }
   shopAndEatMap(){
     this.setState({
