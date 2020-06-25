@@ -37,12 +37,12 @@ var ratingImages = {
 }
 const ItemContainer = styled.div`
 background-color: white;
-padding: 2px;
+padding: 5px;
 margin: 10px;
-border-radius: 5px;
+border-radius: 8px;
+border-color: rgb(232, 233, 234);
 border-style: solid;
 border-width: 1px;
-border-color: black;
 display: flex;
 flex-direction: row;
 align-items:center;
@@ -53,6 +53,7 @@ flex:1
 
 const RightContainer = styled.div`
 flex: 4
+padding: 5px;
 `
 
 const ItemTitle = styled.div`
@@ -66,7 +67,7 @@ const ItemContent = styled.div`
 const BusinessImage = styled.div`
 background-image: url(${props => props.src});
 background-repeat: no-repeat;
-background-size: contain;
+background-size: cover;
 height: 50px;
 border-radius: 8px;
 `

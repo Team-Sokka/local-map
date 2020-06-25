@@ -24,6 +24,9 @@ z-index: 500;
 margin-left: 68%;
 margin-top 10px;
 border-radius: 8px;
+border-color: rgb(232, 233, 234);
+border-style: solid;
+border-width: 1px;
 visibility: ${props => {
   if (props.styling.commute || props.styling.crime || props.styling.schools || props.styling.shopAndEat ) {
     return 'visible'
