@@ -25,10 +25,11 @@
     * [Map](#Map)
     * [StreetView](#StreetView)
 1. [Server Methods](#Server-Methods)
-    * [\/] (#/)
-    * [\/seed] (#/seed)
-    * [\/house\/:id] (#/house/:id)
-    * [\/map\/:service] (#/map/:service)
+    * [Root] (#Root)
+    * [Seed Data] (#Seed-Data)
+    * [Find House by ID] (#Find-House-by-ID)
+    * [Find Markers via an external API](#Find-Markers-via-an-external-API)
+
 
 ## Usage
 
@@ -254,10 +255,10 @@ npm install
 
 ## Server Methods
 
-### /
+### Root
 
-### /seed
+### Seed Data
 
-### /house/:id
+### Find House by ID
 
-### /map/:service
+### Find Markers via an external API
