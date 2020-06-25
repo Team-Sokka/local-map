@@ -16,11 +16,11 @@ const Details = (props) => (
 
 const DetailContainer = styled.div`
 height: 70%;
-width: 25%;
+width: 30%;
 background-color: white;
 position: absolute;
 z-index: 500;
-margin-left: 70%;
+margin-left: 68%;
 margin-top 8%;
 border-radius: 5px;
 visibility: ${props => {
