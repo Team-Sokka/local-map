@@ -15,8 +15,6 @@ const DetailsItem = (props) => (
       {props.business.categories[0].title}
     </ItemSubtitle>
     <ItemContent>
-
-    {/* <img src={} style="max-height: 50px"/> */}
     <ReviewsAndRating><img src={ratingImages[props.business.rating]}/> {props.business.review_count} Reviews <a target="_blank" href={props.business.url}><img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{width: '40px'}}/></a></ReviewsAndRating>
     </ItemContent>
   </RightContainer>

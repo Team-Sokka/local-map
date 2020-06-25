@@ -28,7 +28,7 @@ border-color: rgb(232, 233, 234);
 border-style: solid;
 border-width: 1px;
 visibility: ${props => {
-  if (props.styling.commute || props.styling.crime || props.styling.schools || props.styling.shopAndEat ) {
+  if (props.styling.shopAndEat) {
     return 'visible'
   } else {
     return 'hidden'
