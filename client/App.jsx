@@ -177,11 +177,6 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
-    if (document.body.style.backgroundColor === 'transparent' || !document.body.style.backgroundColor ) {
-      document.body.style.backgroundColor = 'rgba(10,10,10,0.8)';
-    } else {
-      document.body.style.backgroundColor = 'transparent';
-    }
     this.showState()
   }
   showState(){
