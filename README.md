@@ -18,13 +18,17 @@
 1. [Development](#development)
 1. [React Component Breakdown](#React-Component-Breakdown)
     * [App](#App)
-    * [Modal](#)
-    - [ModalNav](#)
-    - [Details](#)
-    - [DetialsItem](#)
-    - [Map](#)
-    - [StreetView](#)
-1. [Server Methods](#)
+    * [Modal](#Modal)
+    * [ModalNav](#ModalNav)
+    * [Details](#Details)
+    * [DetialsItem](#DetailsItem)
+    * [Map](#Map)
+    * [StreetView](#StreetView)
+1. [Server Methods](#Server-Methods)
+    * [/] (#/)
+    * [/seed] (#/seed)
+    * [/house/:id] (#/house/:id)
+    * [/map/:service] (#/map/:service)
 
 ## Usage
 
@@ -249,3 +253,11 @@ npm install
   - N/A
 
 ## Server Methods
+
+### /
+
+### /seed
+
+### /house/:id
+
+### /map/:service
