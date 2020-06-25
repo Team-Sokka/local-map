@@ -16,6 +16,15 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
+1. [React Component Breakdown](#React Component Breakdown)
+  - [App](#App)
+  - [Modal](#)
+  - [ModalNav](#)
+  - [Details](#)
+  - [DetialsItem](#)
+  - [Map](#)
+  - [StreetView](#)
+1. [Server Methods](#)
 
 ## Usage
 
@@ -42,7 +51,7 @@ npm install
 
 # React Component Breakdown
 
-## App - Holds all other components
+## App
 ### Child React Components
   - Modal
 ### Styled Components
@@ -238,3 +247,5 @@ npm install
   - N/A
 ### Methods
   - N/A
+
+## Server Methods
