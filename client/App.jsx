@@ -176,14 +176,6 @@ class App extends React.Component {
     var modalVisibility = this.state.modalVisible ? false : true;
     this.setState({
       modalVisible: modalVisibility,
-      currentMapView:{
-        basic: false,
-        streetView: false,
-        schools: false,
-        crime: false,
-        commute: false,
-        shopAndEat: false,
-      }
     });
     if (document.body.style.backgroundColor === 'transparent' || !document.body.style.backgroundColor ) {
       document.body.style.backgroundColor = 'rgba(10,10,10,0.8)';
