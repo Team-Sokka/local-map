@@ -49,28 +49,28 @@ visibility: ${props => {
   }
 }}
 `
-//margin-bottom: 4px" //img
+
 const TitleContainer = styled.div`
-text-align: left;
+  text-align: left;
 `
 const MainTitle = styled.div`
-padding: 5px;
-font-size: 20px;
-font-weight: bold;
-color: rgb(59, 65, 68);
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(59, 65, 68);
 `
 
 const SubTitle = styled.div`
-padding: 2px 2px 5px 5px;
-font-size: 12px;
-align-items: center;
-display: flex;
+  padding: 2px 2px 5px 5px;
+  font-size: 12px;
+  align-items: center;
+  display: flex;
 `
 
 const ContentContainer = styled.div`
-border-radius: 5px;
-overflow:scroll;
-max-height: 87%;
+  border-radius: 5px;
+  overflow:scroll;
+  max-height: 87%;
 `
 
 export default Details;

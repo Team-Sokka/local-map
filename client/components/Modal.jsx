@@ -18,16 +18,16 @@ const Modal = (props) => (
 )
 //Styled Components
 const FlexContainer = styled.div.attrs({id: 'modal'})`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-height: 100vh;
-width: 100vw;
-position: absolute;
-background-color: rgba(0, 0, 0, 0.6);
-backdrop-filter: blur(20px);
-visibility: ${props => props.hide? 'hidden': 'visible'};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  visibility: ${props => props.hide? 'hidden': 'visible'};
 `
 
 const ModalContainer = styled.div`
@@ -46,10 +46,10 @@ const ModalContainer = styled.div`
   visibility: ${props => props.hide? 'hidden': 'visible'};
 `
 const MapContainer = styled.div`
-display: flex;
-position: relative;
-flex-direction: column;
-flex: 1 1 0%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex: 1 1 0%;
 `
 
 export default Modal;
