@@ -9,7 +9,7 @@ const Details = (props) => (
         Shop & Eat
         </MainTitle>
         <SubTitle>
-          Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40p", "margin-bottom": "4px", "padding-left": "2px"}}/>
+          Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
         </SubTitle>
       </TitleContainer>
     <ContentContainer>

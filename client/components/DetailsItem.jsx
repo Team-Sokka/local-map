@@ -51,7 +51,7 @@ flex:1
 
 const RightContainer = styled.div`
 flex: 4;
-padding: 5px;
+padding-left: 5px;
 `
 
 const ItemTitle = styled.div`
@@ -63,15 +63,22 @@ color: gray;
 `
 const ItemContent = styled.div`
 `
-const BusinessImage = styled.div`
-background-image: url(${props => props.src});
-background-repeat: no-repeat;
-background-size: cover;
-height: 50px;
+const BusinessImage = styled.img`
+height: 53px;
+width: 53px;
+object-fit: cover;
 border-radius: 8px;
 `
+
+// const BusinessImage = styled.div`
+// background-image: url(${props => props.src});
+// background-repeat: no-repeat;
+// background-size: cover;
+// height: 50px;
+// border-radius: 8px;
+// `
 const ReviewsAndRating = styled.div`
-font-size: 12px;
+font-size: 10px;
 `
 
 export default DetailsItem;
