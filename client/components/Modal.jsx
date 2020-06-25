@@ -6,17 +6,30 @@ import StreetView from './StreetView.jsx';
 import Details from './Details.jsx';
 
 const Modal = (props) => (
+<FlexContainer hide={props.modalVisible}>
+  <ModalContainer hide={props.modalVisible}>
+    <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
+      <Details hide={props.modalVisible} styling={props.currentMapView} places={props.places}/>
+      <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
+      <StreetView />
 
-<ModalContainer hide={props.modalVisible}>
-  <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
-    <Details hide={props.modalVisible} styling={props.currentMapView} places={props.places}/>
-    <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
-    <StreetView />
-
-</ModalContainer>
+  </ModalContainer>
+</FlexContainer>
 
 )
 //Styled Components
+const FlexContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100%;
+width: 100%;
+position: absolute;
+background-color: rgba(10, 10, 10, 0.9);
+visibility: ${props => props.hide? 'hidden': 'visible'};
+`
+
 const ModalContainer = styled.div`
   height: 80vh;
   width: 90%;
