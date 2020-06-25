@@ -23,8 +23,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-height: 100%;
-width: 100%;
+height: 100vh;
+width: 100vw;
 position: absolute;
 background-color: rgba(0, 0, 0, 0.6);
 backdrop-filter: blur(20px);
@@ -32,8 +32,8 @@ visibility: ${props => props.hide? 'hidden': 'visible'};
 `
 
 const ModalContainer = styled.div`
-  height: 80vh;
-  width: 90%;
+  height: calc(100% - 96px);
+  width: calc(100% - 96px);
   z-index: 1000;
   position: absolute;
   justify-content: center;
