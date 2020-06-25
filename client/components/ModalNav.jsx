@@ -54,7 +54,7 @@ background-color: transparent;
 border-radius: 8px;
 border-width: 1px;
 text-align:center;
-margin 5px;
+margin: 5px;
 padding: 8px 16px;
 line-height: 1.5;
 font-size: 16px;

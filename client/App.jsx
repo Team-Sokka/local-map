@@ -38,9 +38,10 @@ class App extends React.Component {
       this.initializeMap();
       }).catch((err)=>console.log(err))
     //Add Event Listener
-    document.body.addEventListener('click', (e) =>{
+    document.getElementById('modal').addEventListener('click', (e) =>{
       //console.log('Body Click')
       //console.log(e.target)
+      //console.log('state', this.state)
       //this.toggleModal()
     })
   }

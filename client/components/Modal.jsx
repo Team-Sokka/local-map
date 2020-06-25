@@ -17,7 +17,7 @@ const Modal = (props) => (
 
 )
 //Styled Components
-const FlexContainer = styled.div`
+const FlexContainer = styled.div.attrs({id: 'modal'})`
 display: flex;
 flex-direction: column;
 align-items: center;

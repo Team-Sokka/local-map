@@ -15,7 +15,15 @@ const DetailsItem = (props) => (
       {props.business.categories[0].title}
     </ItemSubtitle>
     <ItemContent>
-    <ReviewsAndRating><img src={ratingImages[props.business.rating]}/> {props.business.review_count} Reviews <a target="_blank" href={props.business.url}><img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{width: '40px'}}/></a></ReviewsAndRating>
+    <ReviewsAndRating>
+      <div>
+        <img src={ratingImages[props.business.rating]}/> {props.business.review_count} Reviews
+      </div>
+      <div>
+        <a target="_blank" href={props.business.url}><img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{width: '40px'}}/></a>
+      </div>
+      </ReviewsAndRating>
+
     </ItemContent>
   </RightContainer>
 
@@ -72,6 +80,9 @@ border-radius: 8px;
 
 const ReviewsAndRating = styled.div`
 font-size: 10px;
+color: rgb(134, 144, 153);
+display: flex;
+justify-content: space-between;
 `
 
 export default DetailsItem;
