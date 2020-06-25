@@ -26,7 +26,8 @@ justify-content: center;
 height: 100%;
 width: 100%;
 position: absolute;
-background-color: rgba(10, 10, 10, 0.9);
+background-color: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(20px);
 visibility: ${props => props.hide? 'hidden': 'visible'};
 `
 
