@@ -1,15 +1,8 @@
 # Project Name
 
-> Project description
-
-## Related Projects
-### Proxy Projects
-  - https://github.com/Team-Sokka/proxy-local-map
-  - https://github.com/Team-Sokka/Proxy-Listings-Carousel
-  - https://github.com/Team-Sokka/Proxy-Image-Gallery
-### Non-Proxy
-  - https://github.com/Team-Sokka/Image-Gallery
-  - https://github.com/Team-Sokka/Listings-Carousel
+> local map is intended to replicate Trulia's map module on their item page. local map currently has two distinct views:
+> 1. Basic map with a marker
+> 1. Map with markers of local businesses (restaurants, fitness centers, parks, etc.)
 
 ## Table of Contents
 
@@ -25,21 +18,20 @@
     * [Map](#Map)
     * [StreetView](#StreetView)
 1. [Server Endpoints](#Server-Endpoints)
-    * [/](#)
+    * [/](#root---)
     * [/seed](#seed)
     * [/house/:id](#houseid)
     * [/map/:service](#mapservice)
+1. [Related Projects](#related-projects)
+    * [Proxy Projects](#proxy-projects)
+    * [Non Proxy Projects](#non-proxy-projects)
 
 ## Usage
 
-> Some usage instructions
+> This module is intended to be used in tandem with other modules for a wholistic experience. Please use with the listings carousel and image gallery related projects.
 
 ## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
 - Node 6.13.0
-- etc
 
 ## Development
 
@@ -48,7 +40,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
@@ -261,3 +252,13 @@ npm install
 ### /house/:id
 
 ### /map/:service
+
+
+## Related Projects
+### Proxy Projects
+  - https://github.com/Team-Sokka/proxy-local-map
+  - https://github.com/Team-Sokka/Proxy-Listings-Carousel
+  - https://github.com/Team-Sokka/Proxy-Image-Gallery
+### Non-Proxy Projects
+  - https://github.com/Team-Sokka/Image-Gallery
+  - https://github.com/Team-Sokka/Listings-Carousel
