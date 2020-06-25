@@ -9,7 +9,7 @@ const Modal = (props) => (
 
 <ModalContainer hide={props.modalVisible}>
   <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
-    <Details hide={props.modalVisible} styling={props.currentMapView}/>
+    <Details hide={props.modalVisible} styling={props.currentMapView} places={props.places}/>
     <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
     <StreetView />
 
