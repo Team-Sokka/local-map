@@ -24,9 +24,9 @@
     * [DetialsItem](#DetailsItem)
     * [Map](#Map)
     * [StreetView](#StreetView)
-1. [Server Methods](#Server-Methods)
+1. [Server Endpoints](#Server-Endpoints)
     * [/](#)
-    * [/seed](#/seed)
+    * [/seed](#seed)
     * [/house/:id](#houseid)
     * [/map/:service](#mapservice)
 
@@ -252,9 +252,9 @@ npm install
 ### Methods
   - N/A
 
-## Server Methods
+## Server Endpoints
 
-### /
+### Root - /
 
 ### /seed
 
