@@ -260,7 +260,13 @@ npm install
 
 ### Seed Data
 
+### /
+
 ### /seed
+
+### /house/:id
+
+### /map/:service
 
 ### Find House by ID
 
