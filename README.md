@@ -250,7 +250,7 @@ npm install
 ### Methods
   - N/A
 
-## Server Endpoints
+# Server Endpoints
 
 ### Root - /
   - Expects a GET Request
