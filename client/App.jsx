@@ -313,7 +313,7 @@ const IndividualMapContainer = styled.div`
 `;
 
 const MapTile = styled.div`
-border-radius: 6px;
+  border-radius: 6px;
   background-image: ${props => props.img? `url(${props.img})` : `url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D')` };
   background-repeat: no-repeat;
   background-position: center;
@@ -326,9 +326,9 @@ const MapTitle = styled.div`
   line-height: 1.5;
 `;
 const MapSubTitle = styled.div`
-color: rgb(134, 144, 153);
-font-size: 14px;
-line-height: 1.43;
+  color: rgb(134, 144, 153);
+  font-size: 14px;
+  line-height: 1.43;
 `;
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
