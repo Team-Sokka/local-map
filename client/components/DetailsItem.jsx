@@ -70,13 +70,6 @@ object-fit: cover;
 border-radius: 8px;
 `
 
-// const BusinessImage = styled.div`
-// background-image: url(${props => props.src});
-// background-repeat: no-repeat;
-// background-size: cover;
-// height: 50px;
-// border-radius: 8px;
-// `
 const ReviewsAndRating = styled.div`
 font-size: 10px;
 `
