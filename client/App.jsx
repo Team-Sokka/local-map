@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       modalVisible: true,
       currentHouse: {},
+      currentPlaces: [],
       shopAndEatMarkers: [],
       location: {},
       currentMapView: {
@@ -37,9 +38,10 @@ class App extends React.Component {
       this.initializeMap();
       }).catch((err)=>console.log(err))
     //Add Event Listener
-    document.body.addEventListener('click', (e) =>{
+    document.getElementById('modal').addEventListener('click', (e) =>{
       //console.log('Body Click')
       //console.log(e.target)
+      //console.log('state', this.state)
       //this.toggleModal()
     })
   }
@@ -78,9 +80,13 @@ class App extends React.Component {
       lng: this.state.location[0]
     }
   }).then((data) => {
-    console.log('Data - ', data)
+      var places = [];
       data.data.forEach((category) => {
         this.createShopAndEatMarkers(category.businesses)
+        places = places.concat(category.businesses)
+      })
+      this.setState({
+        currentPlaces: places
       })
     })
   }
@@ -172,11 +178,10 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
-    if (document.body.style.backgroundColor === 'transparent' || !document.body.style.backgroundColor ) {
-      document.body.style.backgroundColor = 'rgba(10,10,10,0.8)';
-    } else {
-      document.body.style.backgroundColor = 'transparent';
-    }
+    this.showState()
+  }
+  showState(){
+    console.log('State - ', this.state)
   }
   shopAndEatMap(){
     this.setState({
@@ -255,7 +260,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal places={this.state.currentPlaces} closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>

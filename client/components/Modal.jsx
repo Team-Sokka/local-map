@@ -3,22 +3,36 @@ import styled from 'styled-components';
 import ModalNav from './ModalNav.jsx';
 import Map from './Map.jsx';
 import StreetView from './StreetView.jsx';
-import YelpList from './YelpList.jsx';
+import Details from './Details.jsx';
 
 const Modal = (props) => (
+<FlexContainer hide={props.modalVisible}>
+  <ModalContainer hide={props.modalVisible}>
+    <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
+      <Details hide={props.modalVisible} styling={props.currentMapView} places={props.places}/>
+      <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
 
-<ModalContainer hide={props.modalVisible}>
-  <ModalNav closeModal={props.closeModal} currentMapView={props.currentMapView} mapToggles={props.mapToggles}/>
-  {/* <YelpList /> */}
-  <Map location={props.location} api={props.api} shopAndEatMarkers={props.shopAndEatMarkers}/>
-  <StreetView />
-</ModalContainer>
+  </ModalContainer>
+</FlexContainer>
 
 )
 //Styled Components
+const FlexContainer = styled.div.attrs({id: 'modal'})`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+width: 100vw;
+position: absolute;
+background-color: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(20px);
+visibility: ${props => props.hide? 'hidden': 'visible'};
+`
+
 const ModalContainer = styled.div`
-  height: 80vh;
-  width: 90%;
+  height: calc(100% - 96px);
+  width: calc(100% - 96px);
   z-index: 1000;
   position: absolute;
   justify-content: center;
@@ -30,7 +44,12 @@ const ModalContainer = styled.div`
   border-radius: 5px;
   margin: auto;
   visibility: ${props => props.hide? 'hidden': 'visible'};
-
+`
+const MapContainer = styled.div`
+display: flex;
+position: relative;
+flex-direction: column;
+flex: 1 1 0%;
 `
 
 export default Modal;
