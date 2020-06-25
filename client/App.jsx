@@ -92,12 +92,10 @@ class App extends React.Component {
   }
   createShopAndEatMarkers(businessArray){
     var markers = businessArray.map((business) => {
-      //console.log('Business Categories: ', business.categories) // Array of objects
       let iconMarker = {
         url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',
         scaledSize: new google.maps.Size(30,30)
       }
-      //let iconMarker = 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png' //Default Yelp
       for (var category of business.categories) {
         if (categories.restaurants[category.alias]) {
           iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/RestaurantsDotIcon@2x.png'
@@ -143,12 +141,6 @@ class App extends React.Component {
 
       newMarker.addListener('mouseover', ()=> {
         info.open(map, newMarker)
-        //console.log(business)
-        // console.log('Name: ', business.name)
-        // console.log('Rating: ', business.rating)
-        // console.log('Reviews: ', business.review_count)
-        // console.log(`Moused over ${business.name} at lat: ${business.coordinates.latitude} lng: ${business.coordinates.longitude}`)
-        // console.log(info);
       })
       newMarker.addListener('mouseout', ()=>{
         info.close();
