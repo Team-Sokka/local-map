@@ -256,17 +256,17 @@ npm install
   - Expects a GET Request
   - Responds with the index.html file
 
-### /seed
+### Seeding Data - /seed
   - Expects a GET Request
   - Responds with the data used to seed the database
   - Useful for testing. Not meant for production.
 
-### /house/:id
+### Finding a house - /house/:id
   - Expects a GET Request
   - Required Parameters: id
   - Repsonds with the House document with the corresponding house id
 
-### /map/:service
+### Getting markers for the map - /map/:service
   - Expects a GET Request
   - Required Parameters: service
     - ex: yelp
