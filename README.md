@@ -25,9 +25,10 @@
     * [Map](#Map)
     * [StreetView](#StreetView)
 1. [Server Methods](#Server-Methods)
-    * [Root] (#Root)
-    * [Seed Data] (#Seed-Data)
-    * [Find House by ID] (#Find-House-by-ID)
+    * [Root](#root)
+    * [Seed Data](#seed-data)
+    * [/seed](#seed-data)
+    * [Find House by ID](#find-house-by-id)
     * [Find Markers via an external API](#Find-Markers-via-an-external-API)
 
 
