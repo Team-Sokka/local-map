@@ -57,7 +57,7 @@ const MainTitle = styled.div`
 padding: 5px;
 font-size: 20px;
 font-weight: bold;
-color: rgb(59, 65, 68
+color: rgb(59, 65, 68);
 `
 
 const SubTitle = styled.div`
