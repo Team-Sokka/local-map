@@ -99,9 +99,6 @@ class Details extends React.Component {
     } else {
       content =
       <FormContainer>
-        <FormTitleContainer>
-        </FormTitleContainer>
-
         <FormTitle>Contact A Premier Agent</FormTitle>
         <Form>
           <SimpleInput placeholder={'Name'} type={'text'} value={this.state.name} onChange={this.updateName.bind(this)}></SimpleInput>
@@ -159,9 +156,6 @@ const DetailContainer = styled.div`
 
 const TitleContainer = styled.div`
   text-align: left;
-`
-const FormTitleContainer = styled(TitleContainer)`
-  padding: 2px;
 `
 
 const FormTitle = styled.h1`
