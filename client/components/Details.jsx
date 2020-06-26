@@ -30,6 +30,7 @@ class Details extends React.Component {
       phone: '',
       email: '',
       message: `I am interested in ${this.props.currentHouse.address}`,
+      talkAboutFinancing: false
     }
   }
 
@@ -58,6 +59,11 @@ class Details extends React.Component {
     });
     this.logThis('Message ',this.state.message)
   }
+  updateTalkAboutFinancing(){
+    this.setState({
+      talkAboutFinancing: !this.state.talkAboutFinancing
+    })
+  }
   logThis(type,content){
     console.log(type, content)
     console.log('Props', this.props)
@@ -69,6 +75,7 @@ class Details extends React.Component {
     console.log('Phone: ', this.state.phone)
     console.log('Email: ', this.state.email)
     console.log('Message: ', this.state.message)
+    console.log('Financing:', this.state.talkAboutFinancing)
   }
   render(){
     let content;
@@ -91,7 +98,6 @@ class Details extends React.Component {
       </React.Fragment>
     } else {
       content =
-      <React.Fragment>
       <FormContainer>
         <FormTitleContainer>
         </FormTitleContainer>
@@ -104,9 +110,14 @@ class Details extends React.Component {
           <MessageText type={'text'} value={this.state.message} onChange={this.updateMessage.bind(this)}></MessageText>
           {/* <SimpleInput type={'checkbox'}>I want to talk about financing</SimpleInput> */}
           <Submit onClick={this.sendMessage.bind(this)}>Request Info</Submit>
+          <CheckboxContainer>
+            <CheckBox type={'checkbox'} onClick={this.updateTalkAboutFinancing.bind(this)}/><label>I want to talk about financing</label>
+          </CheckboxContainer>
         </Form>
+        <LegalDisclaimer>
+        By pressing Request Info, you agree that House Reactor and real estate professionals may contact you via phone/text about your inquiry, which may involve the use of automated means. You are not required to consent as a condition of purchasing any property, goods or services. Message/data rates may apply. You also agree to our <a target="_blank" href="https://www.trulia.com/terms">Terms of Use</a>&nbsp;House Reactor does not endorse any <span><a target="_blank">real estate professionals</a></span>&nbsp;
+        </LegalDisclaimer>
       </FormContainer>
-      </React.Fragment>
     }
     return(
       <FlexContainer>
@@ -190,7 +201,6 @@ const FormContainer = styled.div`
 padding: 16px;
 `
 
-
 const SimpleInput = styled.input`
   display: inline-block;
   border-radius: 8px;
@@ -237,6 +247,31 @@ const Submit = styled.button`
     background-color: rgb(255, 255, 255);
     color: rgb(217, 60, 35);
   }
+`
+const CheckboxContainer = styled.div`
+  display: flex;
+  width: 100%;
+  color: rgb(134, 144, 153);
+  font-size: 12px;
+  line-height: 2;
+  margin: 3px;
+  align-items: center;
+`;
+
+const CheckBox = styled.input`
+  display: inline-block;
+  border-radius: 8px;
+  border-color: rgb(205, 209, 212);
+  border-style: solid;
+  border-width: 1px;
+  font-size: 16px;
+  line-height: 1.5;
+`
+
+const LegalDisclaimer = styled.div`
+font-size: 10px;
+line-height: 16px;
+color: rgb(134, 144, 153);
 `
 
 export default Details;
