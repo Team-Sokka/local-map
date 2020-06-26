@@ -62,7 +62,8 @@ class Details extends React.Component {
     console.log(type, content)
     console.log('Props', this.props)
   }
-  sendMessage(){
+  sendMessage(e){
+    e.preventDefault()
     console.log('Name: ', this.state.name)
     console.log('Phone: ', this.state.phone)
     console.log('Email: ', this.state.email)
@@ -95,7 +96,7 @@ class Details extends React.Component {
         </TitleContainer>
         <FormContainer>
           <SimpleInput placeholder={'Name'} type={'text'} value={this.state.name} onChange={this.updateName.bind(this)}></SimpleInput>
-          <SimpleInput placeholder={'Phone'} pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" type={'tel'} value={this.state.phone} onChange={this.updatePhone.bind(this)}></SimpleInput>
+          <SimpleInput placeholder={'Phone'} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type={'tel'} value={this.state.phone} onChange={this.updatePhone.bind(this)}></SimpleInput>
           <SimpleInput placeholder={'Email'} type={'email'} value={this.state.email} onChange={this.updateEmail.bind(this)}></SimpleInput>
           <MessageText type={'textarea'} value={this.state.message} onChange={this.updateMessage.bind(this)}></MessageText>
           {/* <SimpleInput type={'checkbox'}>I want to talk about financing</SimpleInput> */}
@@ -163,12 +164,22 @@ const ContentContainer = styled.div`
   overflow:scroll;
   max-height: 87%;
 `
-const FormContainer = styled(ContentContainer)`
+const FormContainer = styled.form`
+  border-radius: 5px;
+  overflow:scroll;
+  max-height: 87%;
   padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
+
+// const FormContainer = styled(ContentContainer)`
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `
 
 const SimpleInput = styled.input`
   display: inline-block;
