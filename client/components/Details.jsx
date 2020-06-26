@@ -78,7 +78,7 @@ class Details extends React.Component {
         {this.props.places.map((business, key) => {
           return <DetailsItem business={business} key={key}/>
         })}
-        </ContentContainer>;
+        </ContentContainer>
       </React.Fragment>
     } else {
       content =
