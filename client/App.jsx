@@ -252,7 +252,7 @@ class App extends React.Component {
   render(){
     return (
       <React.Fragment>
-       <Modal places={this.state.currentPlaces} closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal currentHouse={this.state.currentHouse} places={this.state.currentPlaces} closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap.bind(this)}>
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
