@@ -29,6 +29,7 @@
     * [/seed](#seeding-data---seed)
     * [/house/:id](#finding-a-house---houseid)
     * [/map/:service](#getting-markers-for-the-map---mapservice)
+1. [Map Setup Explained](#map-setup-explained)
 1. [Related Projects](#related-projects)
     * [Proxy Projects](#proxy-projects)
     * [Non Proxy Projects](#non-proxy-projects)
@@ -197,15 +198,42 @@ npm install
   - DetailsItem
 
 ### Styled Components
+  - FlexContainer
+  - DetailContainer
   - TitleContainer
   - MainTitle
   - SubTitle
   - ContentContainer
+  - FormContainer
+  - FormTitle
+  - Form
+  - SimpleInput
+  - MessageText
+  - Submit
+  - CheckboxContainer
+  - CheckBox
+  - Legal Disclaimer
 
 ### State
-  - N/A
+  - name - Value of the name field in the form
+  - phone - Value of the phone field in the form
+  - email - Value of the email field in the form
+  - message - Value of the message field in the form
+  - defaultMessageRendered - Boolean that specifies if the message has been updated to include the current house address
+  - talkAboutFinancing - Boolean value of the checkbox field in the form
 ### Methods
-  - N/A
+  - componentDidUpdate() - On initial render, this.props.currentHouse.address is undefined. When currentHouse is initialized to an object, this funciton runs. Inside, there is a conditional that checks the state of defaultMessageRendered. If it is false, the state of message is updated with the currentHouse address, and defaultMessageRendered is set to true to avoid an infinite loop.
+  - updateName(event) - Updates the state of name
+  - updatePhone(event) - Updates the state of phone
+  - updateEmail(event) - Updates the state of email
+  - updateMessage(event) - Updates the state of message
+  - updateTalkAboutFinancing() - Toggles talkAboutFinancing
+  - logThis(type, content) - Helper function for debugging
+    - type is a string to be logged before content
+    - content is the state, prop, etc. to be checked
+    - By default, there are two console logs to be used in here to display the props and state.
+  - sendMessage(e) - Unconfigured function to sendMessage
+    - Configure this however you would like the message to be sent.
 
 ## DetailsItem Component
 
@@ -277,7 +305,20 @@ npm install
   - Responds with JSON data from the specified service.
     - Ex: a request with yelp specified as the service will return with JSON data about the surrounding businesses.
 
-## Related Projects
+# Map Setup Explained
+
+By default Google Maps expects you to be working with html, css, and js.
+The API is loaded with a simple script tag. The suggested implementation is to include a callback function in the request. This callback function initializes the map onto a specified element (typically a div with an id of 'map' or something similar).
+
+However, we are using components that transpile to js and render html, rather than loading all of our html at once. This means, that the 'map' div cannot be found, and the code will error out.
+
+The solution to this is to not use a callback function, and instead instatiate a new map object inside of the App component. This map is add as a property on the window object so that it can be accessed and manipulated in any component.
+
+A package such as [Google Map React](https://www.npmjs.com/package/google-map-react) could be used as well, but we appreciated the flexibility of working without a package.
+
+Visit Google's site for more details on [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+
+# Related Projects
 ### Proxy Projects
   - https://github.com/Team-Sokka/proxy-local-map
   - https://github.com/Team-Sokka/Proxy-Listings-Carousel
