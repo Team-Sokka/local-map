@@ -2,26 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import DetailsItem from './DetailsItem.jsx'
 
-// const Details = (props) => (
-//   <FlexContainer>
-//   <DetailContainer styling={props.styling} hide={props.hide}>
-//     <TitleContainer>
-//       <MainTitle>
-//         Shop & Eat
-//         </MainTitle>
-//         <SubTitle>
-//           Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
-//         </SubTitle>
-//       </TitleContainer>
-//     <ContentContainer>
-//     {props.places.map((business, key) => {
-//       return <DetailsItem business={business} key={key}/>
-//     })}
-//     </ContentContainer>
-//   </DetailContainer>
-//   </FlexContainer>
-// )
-
 class Details extends React.Component {
   constructor(props){
     super(props)
