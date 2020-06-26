@@ -9,14 +9,18 @@ class Details extends React.Component {
       name: '',
       phone: '',
       email: '',
-      message: `I am interested in ${this.props.currentHouse.address}`,
+      message: ``,
+      defaultMessageRendered: false,
       talkAboutFinancing: false
     }
   }
-
-  componentDidMount(){
-    console.log('DETAILS MOUNTED')
-    console.log('Props', this.props)
+  componentDidUpdate(){
+    if(!this.state.defaultMessageRendered) {
+      this.setState({
+        defaultMessageRendered: true,
+        message: `I am interested in ${this.props.currentHouse.address}`
+      })
+    }
   }
   updateName(e){
     this.setState({
@@ -37,7 +41,7 @@ class Details extends React.Component {
     this.setState({
       message: e.target.value
     });
-    this.logThis('Message ',this.state.message)
+    //this.logThis('Message ',this.state.message)
   }
   updateTalkAboutFinancing(){
     this.setState({
@@ -46,11 +50,11 @@ class Details extends React.Component {
   }
   logThis(type,content){
     console.log(type, content)
-    console.log('Props', this.props)
+    console.log('Props - ', this.props)
+    console.log('State - ', this.state)
   }
   sendMessage(e){
     e.preventDefault()
-    console.log(this.props)
     console.log('Name: ', this.state.name)
     console.log('Phone: ', this.state.phone)
     console.log('Email: ', this.state.email)
