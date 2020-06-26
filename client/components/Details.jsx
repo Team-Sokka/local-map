@@ -102,9 +102,9 @@ class Details extends React.Component {
     }
     return(
       <FlexContainer>
-      <DetailContainer styling={this.props.styling} hide={this.props.hide}>
+        <DetailContainer styling={this.props.styling} hide={this.props.hide}>
       {content}
-      </DetailContainer>
+        </DetailContainer>
       </FlexContainer>
     )
   }
@@ -141,13 +141,6 @@ const DetailContainer = styled.div`
 const TitleContainer = styled.div`
   text-align: left;
 `
-
-const FormTitle = styled.h1`
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1.2;
-`
-
 const MainTitle = styled.div`
   padding: 5px;
   font-size: 20px;
@@ -167,6 +160,17 @@ const ContentContainer = styled.div`
   overflow:scroll;
   max-height: 87%;
 `
+
+const FormContainer = styled.div`
+padding: 16px;
+`
+
+const FormTitle = styled.h1`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+`
+
 const Form = styled.form`
   border-radius: 5px;
   overflow:scroll;
@@ -175,10 +179,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
 `
-const FormContainer = styled.div`
-padding: 16px;
-`
-
 const SimpleInput = styled.input`
   display: inline-block;
   border-radius: 8px;

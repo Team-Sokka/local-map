@@ -197,15 +197,42 @@ npm install
   - DetailsItem
 
 ### Styled Components
+  - FlexContainer
+  - DetailContainer
   - TitleContainer
   - MainTitle
   - SubTitle
   - ContentContainer
+  - FormContainer
+  - FormTitle
+  - Form
+  - SimpleInput
+  - MessageText
+  - Submit
+  - CheckboxContainer
+  - CheckBox
+  - Legal Disclaimer
 
 ### State
-  - N/A
+  - name - Value of the name field in the form
+  - phone - Value of the phone field in the form
+  - email - Value of the email field in the form
+  - message - Value of the message field in the form
+  - defaultMessageRendered - Boolean that specifies if the message has been updated to include the current house address
+  - talkAboutFinancing - Boolean value of the checkbox field in the form
 ### Methods
-  - N/A
+  - componentDidUpdate() - On initial render, this.props.currentHouse.address is undefined. When currentHouse is initialized to an object, this funciton runs. Inside, there is a conditional that checks the state of defaultMessageRendered. If it is false, the state of message is updated with the currentHouse address, and defaultMessageRendered is set to true to avoid an infinite loop.
+  - updateName(event) - Updates the state of name
+  - updatePhone(event) - Updates the state of phone
+  - updateEmail(event) - Updates the state of email
+  - updateMessage(event) - Updates the state of message
+  - updateTalkAboutFinancing() - Toggles talkAboutFinancing
+  - logThis(type, content) - Helper function for debugging
+    - type is a string to be logged before content
+    - content is the state, prop, etc. to be checked
+    - By default, there are two console logs to be used in here to display the props and state.
+  - sendMessage(e) - Unconfigured function to sendMessage
+    - Configure this however you would like the message to be sent.
 
 ## DetailsItem Component
 
