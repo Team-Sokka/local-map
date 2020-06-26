@@ -29,6 +29,7 @@
     * [/seed](#seeding-data---seed)
     * [/house/:id](#finding-a-house---houseid)
     * [/map/:service](#getting-markers-for-the-map---mapservice)
+1. [Map Setup Explained](#map-setup-explained)
 1. [Related Projects](#related-projects)
     * [Proxy Projects](#proxy-projects)
     * [Non Proxy Projects](#non-proxy-projects)
@@ -304,7 +305,20 @@ npm install
   - Responds with JSON data from the specified service.
     - Ex: a request with yelp specified as the service will return with JSON data about the surrounding businesses.
 
-## Related Projects
+# Map Setup Explained
+
+By default Google Maps expects you to be working with html, css, and js.
+The API is loaded with a simple script tag. The suggested implementation is to include a callback function in the request. This callback function initializes the map onto a specified element (typically a div with an id of 'map' or something similar).
+
+However, we are using components that transpile to js and render html, rather than loading all of our html at once. This means, that the 'map' div cannot be found, and the code will error out.
+
+The solution to this is to not use a callback function, and instead instatiate a new map object inside of the App component. This map is add as a property on the window object so that it can be accessed and manipulated in any component.
+
+A package such as [Google Map React](https://www.npmjs.com/package/google-map-react) could be used as well, but we appreciated the flexibility of working without a package.
+
+Visit Google's site for more details on [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+
+# Related Projects
 ### Proxy Projects
   - https://github.com/Team-Sokka/proxy-local-map
   - https://github.com/Team-Sokka/Proxy-Listings-Carousel
