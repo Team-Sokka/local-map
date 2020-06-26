@@ -9,7 +9,6 @@ const DetailsItem = (props) => (
   <RightContainer>
     <ItemTitle>
       {props.business.name}
-      {/* {console.log(props.business)} */}
     </ItemTitle>
     <ItemSubtitle>
       {props.business.categories[0].title}

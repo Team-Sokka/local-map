@@ -24,6 +24,15 @@ class App extends React.Component {
         shopAndEat: false,
       },
     }
+    //Bound Functions
+    this.toggleModal = this.toggleModal.bind(this);
+    this.basicMap = this.basicMap.bind(this);
+    this.streetViewMap = this.streetViewMap.bind(this);
+    this.schoolsMap = this.schoolsMap.bind(this);
+    this.crimeMap = this.crimeMap.bind(this);
+    this.commuteMap = this.commuteMap.bind(this);
+    this.shopAndEatMap = this.shopAndEatMap.bind(this);
+
   }
   componentDidMount(){
     var params = this.pullParams();
@@ -250,17 +259,22 @@ class App extends React.Component {
     })
   }
   render(){
+    //Destructuring State
+    const { currentHouse, currentPlaces, currentMapView, modalVisible, mapViewHeight, streetViewHeight } = this.state;
     return (
       <React.Fragment>
-       <Modal places={this.state.currentPlaces} closeModal={this.toggleModal.bind(this)} currentMapView={this.state.currentMapView} modalVisible={this.state.modalVisible} mapToggles={{basicMap: this.basicMap.bind(this), streetView: this.streetViewMap.bind(this), schoolMap: this.schoolsMap.bind(this), crimeMap:this.crimeMap.bind(this), commuteMap: this.commuteMap.bind(this), shopAndEat: this.shopAndEatMap.bind(this)}} mapHeight={this.state.mapViewHeight} streetViewHeight={this.state.streetViewHeight}/>
+       <Modal currentHouse={currentHouse} places={currentPlaces} closeModal={this.toggleModal}
+       currentMapView={currentMapView} modalVisible={modalVisible}
+       mapToggles={{basicMap: this.basicMap, streetView: this.streetViewMap, schoolMap: this.schoolsMap, crimeMap:this.crimeMap, commuteMap: this.commuteMap, shopAndEat: this.shopAndEatMap}}
+       mapHeight={mapViewHeight} streetViewHeight={streetViewHeight}/>
       <MapModuleContainer>
-        <IndividualMapContainer onClick={this.basicMap.bind(this)}>
+        <IndividualMapContainer onClick={this.basicMap}>
           <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
 
           <MapTitle>Map View</MapTitle>
-    <MapSubTitle>Explore the area around {this.state.currentHouse.address? this.state.currentHouse.address.substring(0, this.state.currentHouse.address.indexOf(',')) : ''}</MapSubTitle>
+    <MapSubTitle>Explore the area around {currentHouse.address? currentHouse.address.substring(0, currentHouse.address.indexOf(',')) : ''}</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.streetViewMap.bind(this)}>
+        <IndividualMapContainer onClick={this.streetViewMap}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
             <MapTitle>Street View</MapTitle>
             <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
@@ -283,7 +297,7 @@ class App extends React.Component {
             <MapTitle>Commute</MapTitle>
             <MapSubTitle>96% of residents commute by car</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer onClick={this.shopAndEatMap.bind(this)}>
+        <IndividualMapContainer onClick={this.shopAndEatMap}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
             <MapTitle>Shop & Eat</MapTitle>
             <MapSubTitle>208 Restaurants</MapSubTitle>
