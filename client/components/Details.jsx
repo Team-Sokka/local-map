@@ -64,6 +64,7 @@ class Details extends React.Component {
   }
   sendMessage(e){
     e.preventDefault()
+    console.log(this.props)
     console.log('Name: ', this.state.name)
     console.log('Phone: ', this.state.phone)
     console.log('Email: ', this.state.email)
@@ -91,17 +92,20 @@ class Details extends React.Component {
     } else {
       content =
       <React.Fragment>
-        <TitleContainer>
-          Contact A Premier Agent
-        </TitleContainer>
-        <FormContainer>
+      <FormContainer>
+        <FormTitleContainer>
+        </FormTitleContainer>
+
+        <FormTitle>Contact A Premier Agent</FormTitle>
+        <Form>
           <SimpleInput placeholder={'Name'} type={'text'} value={this.state.name} onChange={this.updateName.bind(this)}></SimpleInput>
           <SimpleInput placeholder={'Phone'} pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" type={'tel'} value={this.state.phone} onChange={this.updatePhone.bind(this)}></SimpleInput>
           <SimpleInput placeholder={'Email'} type={'email'} value={this.state.email} onChange={this.updateEmail.bind(this)}></SimpleInput>
-          <MessageText type={'textarea'} value={this.state.message} onChange={this.updateMessage.bind(this)}></MessageText>
+          <MessageText type={'text'} value={this.state.message} onChange={this.updateMessage.bind(this)}></MessageText>
           {/* <SimpleInput type={'checkbox'}>I want to talk about financing</SimpleInput> */}
           <Submit onClick={this.sendMessage.bind(this)}>Request Info</Submit>
-        </FormContainer>
+        </Form>
+      </FormContainer>
       </React.Fragment>
     }
     return(
@@ -145,6 +149,16 @@ const DetailContainer = styled.div`
 const TitleContainer = styled.div`
   text-align: left;
 `
+const FormTitleContainer = styled(TitleContainer)`
+  padding: 2px;
+`
+
+const FormTitle = styled.h1`
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+`
+
 const MainTitle = styled.div`
   padding: 5px;
   font-size: 20px;
@@ -164,22 +178,18 @@ const ContentContainer = styled.div`
   overflow:scroll;
   max-height: 87%;
 `
-const FormContainer = styled.form`
+const Form = styled.form`
   border-radius: 5px;
   overflow:scroll;
   max-height: 87%;
-  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
+const FormContainer = styled.div`
+padding: 16px;
+`
 
-// const FormContainer = styled(ContentContainer)`
-//   padding: 16px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `
 
 const SimpleInput = styled.input`
   display: inline-block;
@@ -190,25 +200,43 @@ const SimpleInput = styled.input`
   padding: 8px;
   font-size: 16px;
   line-height: 1.5;
-  width: 100%;
+  width: 94%;
   margin: 8px;
 `
 
-const MessageText = styled(SimpleInput)`
+const MessageText = styled.textarea`
+  border-radius: 8px;
+  border-color: rgb(205, 209, 212);
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  height: 78px;
+  width: 94%;
+  margin: 8px;
+  resize: none;
 `
 
 const Submit = styled.button`
-display: inline-block;
-border-radius: 8px;
-border-color: rgb(205, 209, 212);
-border-style: solid;
-border-width: 1px;
-padding: 8px;
-font-size: 16px;
-line-height: 1.5;
-width: 100%;
-margin: 8px;
-background-color: red;
+  display: inline-block;
+  border-radius: 8px;
+  border-color: rgb(217, 60, 35);
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+  margin: 8px;
+  background-color: rgb(217, 60, 35);
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
+  &:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(217, 60, 35);
+  }
 `
 
 export default Details;
