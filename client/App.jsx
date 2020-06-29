@@ -37,6 +37,14 @@ class App extends React.Component {
 
   }
   componentDidMount(){
+    //Add script to body for map
+    var googleMapsScript = document.createElement('script');
+    googleMapsScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyAggoE_AG9-JK_ry_hzCNFZ6H1W1b4MLIw");
+    document.head.append(googleMapsScript)
+  //   <script
+  // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAggoE_AG9-JK_ry_hzCNFZ6H1W1b4MLIw"> </script>
+  //   //
+
     var params = this.pullParams();
     console.log('Params', params)
     axios.get(`http://127.0.0.1:8002/house/${params.id}`)
@@ -353,7 +361,6 @@ svg {
   padding: 5px;
 }
 `
-
 
 //Styled Components
 const MapModuleContainer = styled.div`
