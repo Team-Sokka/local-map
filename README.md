@@ -43,6 +43,12 @@
 
 ## Development
 
+### Setup
+Create a .env file in the root directory, with the following properties
+1. PORT= **{INSERT DESIRED PORT}**
+1. YELP_API_KEY= **{INSERT YOUR YELP API KEY}**
+1. MONGO_DB_URI= **{INSERT YOUR MONGODB URI}**
+
 ### Installing Dependencies
 
 From within the root directory:
@@ -50,7 +56,19 @@ From within the root directory:
 ```sh
 npm install
 ```
+### Starting the server
 
+From within the root directory:
+
+Run the nodemon server:
+```sh
+npm run dev
+```
+
+Run webpack:
+```sh
+npm run build
+```
 
 # React Component Breakdown
 
