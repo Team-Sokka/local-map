@@ -43,6 +43,12 @@
 
 ## Development
 
+### Setup
+Create a .env file in the root directory, with the following properties
+PORT= **INSERT DESIRED PORT**
+YELP_API_KEY= **INSERT YOUR YELP API KEY**
+MONGO_DB_URI= **INSERT YOUR MONGODB URI**
+
 ### Installing Dependencies
 
 From within the root directory:
