@@ -10,7 +10,6 @@ import categories from '../database/yelpcategories.js'
 class App extends React.Component {
   constructor(props){
     super(props)
-    console.log('styled', styled)
     this.state = {
       modalVisible: true,
       currentHouse: {},
@@ -38,8 +37,8 @@ class App extends React.Component {
   }
   componentDidMount(){
     var params = this.pullParams();
-    console.log('Params', params)
-    axios.get(`http://127.0.0.1:8002/house/${params.id}`)
+    //console.log('Params', params)
+    axios.get(`${process.env.HOST}:${process.env.PORT}/house/${params.id}`)
     .then((data)=> {
       this.setState({
         currentHouse: data.data[0],
@@ -87,7 +86,7 @@ class App extends React.Component {
     var centerMarker = new google.maps.Marker({position: centerPoint, map: map});
   }
   getShopAndEatMarkers(){
-    axios.get(`/map/yelp`,{params:{
+    axios.get(`${process.env.HOST}:${process.env.PORT}/map/yelp`,{params:{
       lat: this.state.location[1],
       lng: this.state.location[0]
     }
@@ -182,7 +181,6 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
-    this.showState()
   }
   showState(){
     console.log('State - ', this.state)

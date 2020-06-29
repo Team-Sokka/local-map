@@ -1,4 +1,8 @@
 const path = require('path');
+const webpack = require('webpack')
+var dotenv = require('dotenv').config({path: __dirname + '/.env'})
+
+//console.log('LOGGING FROM WEBPACK - ', dotenv)
 
 module.exports = {
   entry: './client/App.jsx',
@@ -19,5 +23,10 @@ module.exports = {
         }
       }
     }]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.parsed)
+    })
+  ]
 };
