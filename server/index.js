@@ -25,6 +25,11 @@ app.get('/seed', (req, res) => {
   res.send(trulia.truliaData.data);
 });
 
+app.get('/proxy',(req, res) =>{
+  //console.log('Path: ',path.join(__dirname, '../public/dist'))
+  res.sendFile('bundle.js', {root:path.join(__dirname, '../public/dist')})
+})
+
 //Route for getting housing data
 app.get('/house/:id', (req, res) =>{
   House.find({houseId: req.params.id}).then((data) => res.send(data)).catch(err => res.send(err))
