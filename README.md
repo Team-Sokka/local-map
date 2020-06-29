@@ -301,6 +301,7 @@ npm run build
 ### Root - /
   - Expects a GET Request
   - Responds with the index.html file
+  - Sending a request without parameters will result in content without any housing data, and therefore no map. To retrieve the module with housing information included, include id as a parameter in the request.
 
 ### Seeding Data - /seed
   - Expects a GET Request
