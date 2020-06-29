@@ -50,7 +50,19 @@ From within the root directory:
 ```sh
 npm install
 ```
+### Starting the server
 
+From within the root directory:
+
+Run the nodemon server:
+```sh
+npm run dev
+```
+
+Run webpack:
+```sh
+npm run build
+```
 
 # React Component Breakdown
 
