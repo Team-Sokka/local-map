@@ -28,7 +28,6 @@ app.get('/seed', (req, res) => {
 });
 
 app.get('/proxy',(req, res) =>{
-  //console.log('Path: ',path.join(__dirname, '../public/dist'))
   res.sendFile('bundle.js', {root:path.join(__dirname, '../public/dist')})
 })
 
