@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import Modal from './components/Modal.jsx';
 import categories from '../database/yelpcategories.js'
 
@@ -36,7 +37,8 @@ class App extends React.Component {
   }
   componentDidMount(){
     var params = this.pullParams();
-    axios.get(`/house/${params.id}`)
+    //console.log('Params', params)
+    axios.get(`${process.env.HOST_URL}:${process.env.PORT}/house/${params.id}`)
     .then((data)=> {
       this.setState({
         currentHouse: data.data[0],
@@ -45,7 +47,7 @@ class App extends React.Component {
     }).then(() => {
       //invoke function to create Map
       this.initializeMap();
-      }).catch((err)=>console.log(err))
+      }).catch((err)=>console.log('Error fetching house: ', err))
     //Add Event Listener
     document.getElementById('modal').addEventListener('click', (e) =>{
       //console.log('Body Click')
@@ -84,7 +86,7 @@ class App extends React.Component {
     var centerMarker = new google.maps.Marker({position: centerPoint, map: map});
   }
   getShopAndEatMarkers(){
-    axios.get(`/map/yelp`,{params:{
+    axios.get(`${process.env.HOST_URL}:${process.env.PORT}/map/yelp`,{params:{
       lat: this.state.location[1],
       lng: this.state.location[0]
     }
@@ -179,7 +181,6 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
-    this.showState()
   }
   showState(){
     console.log('State - ', this.state)
@@ -263,6 +264,7 @@ class App extends React.Component {
     const { currentHouse, currentPlaces, currentMapView, modalVisible, mapViewHeight, streetViewHeight } = this.state;
     return (
       <React.Fragment>
+        <GlobalStyle />
        <Modal currentHouse={currentHouse} places={currentPlaces} closeModal={this.toggleModal}
        currentMapView={currentMapView} modalVisible={modalVisible}
        mapToggles={{basicMap: this.basicMap, streetView: this.streetViewMap, schoolMap: this.schoolsMap, crimeMap:this.crimeMap, commuteMap: this.commuteMap, shopAndEat: this.shopAndEatMap}}
@@ -312,6 +314,43 @@ class App extends React.Component {
   }
 
 }
+const GlobalStyle = createGlobalStyle`
+body {
+  font-family: 'Roboto', sans-serif, "Segoe UI Bold", Arial, sans-serif;
+  margin: 0px;
+}
+
+textarea, input, button {
+  font-family: 'Roboto', sans-serif, "Segoe UI Bold", Arial, sans-serif;
+}
+
+
+#mapModule{
+  display: flex;
+  justify-content: space-around;
+}
+
+#map {
+  height: 92%;
+}
+#street-view {
+  height: 100%;
+}
+
+#yelp-list {
+  background-color: purple;
+  position: absolute;
+  z-index: 3;
+  margin-top: 100px;
+  width: 300px
+}
+svg {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+  padding: 5px;
+}
+`
 
 //Styled Components
 const MapModuleContainer = styled.div`

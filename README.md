@@ -26,6 +26,7 @@
     * [StreetView](#StreetView)
 1. [Server Endpoints](#Server-Endpoints)
     * [/](#root---)
+    * [/proxy](#proxy---proxy)
     * [/seed](#seeding-data---seed)
     * [/house/:id](#finding-a-house---houseid)
     * [/map/:service](#getting-markers-for-the-map---mapservice)
@@ -43,8 +44,9 @@
 
 ## Development
 
-### Setup
+### Module Setup
 Create a .env file in the root directory, with the following properties
+1. HOST_URL= **{INSERT YOUR HOST URL}**
 1. PORT= **{INSERT DESIRED PORT}**
 1. YELP_API_KEY= **{INSERT YOUR YELP API KEY}**
 1. MONGO_DB_URI= **{INSERT YOUR MONGODB URI}**
@@ -69,6 +71,26 @@ Run webpack:
 ```sh
 npm run build
 ```
+
+### Additional Setup for a Proxy Server
+Do the following following inside the proxy's html file:
+1. Add the following to the head:
+>  <!-- Icons for local map -->
+>  <script src="https://kit.fontawesome.com/cb5488eec8.js" crossorigin="anonymous"></script>
+>  <!-- Trulia Font -->
+>  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700">
+
+1. Add the following to the body:
+>  <!-- div for the module to attach the component to -->
+> <div id="mapModule"></div>
+>  <!-- script for Google Maps -->
+> <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE"> </script>
+
+1. Send GET request to the /proxy endpoint with id as a paramater, and a number for the corresponding house id.
+> Example:
+> <script src="http://127.0.0.1:8002/proxy?id=144"></script>
+> **Note**: The src for this script tag will need to be dynamically generated.
+
 
 # React Component Breakdown
 
@@ -301,6 +323,11 @@ npm run build
 ### Root - /
   - Expects a GET Request
   - Responds with the index.html file
+  - Sending a request without parameters will result in content without any housing data, and therefore no map. To retrieve the module with housing information included, include id as a parameter in the request.
+
+### Proxy - /proxy
+  - Expects a GET Request
+  - Responds with the webpack bundle
   - Sending a request without parameters will result in content without any housing data, and therefore no map. To retrieve the module with housing information included, include id as a parameter in the request.
 
 ### Seeding Data - /seed

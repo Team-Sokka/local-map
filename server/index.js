@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
 const House = require('../database/House.js');
@@ -9,6 +10,7 @@ const externalAPI = require('./externalAPI.js');
 const trulia = require('../database/truliaSeedData.js');
 const app = express()
 //Middleware
+app.use(cors())
 app.use(morgan('tiny'));
 app.use(helmet())
 app.set('query parser', 'simple');
@@ -20,6 +22,11 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.get('/', (req, res) => {
   res.sendFile('index');
 });
+//Sends webpack bundle
+app.get('/proxy',(req, res) =>{
+  res.sendFile('bundle.js', {root:path.join(__dirname, '../public/dist')})
+})
+
 //Shows Seed Data
 app.get('/seed', (req, res) => {
   res.send(trulia.truliaData.data);
