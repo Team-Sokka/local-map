@@ -58,6 +58,12 @@ From within the root directory:
 ```sh
 npm install
 ```
+
+### Seeding the Database
+```sh
+npm run seed
+```
+
 ### Starting the server
 
 From within the root directory:
