@@ -26,6 +26,7 @@
     * [StreetView](#StreetView)
 1. [Server Endpoints](#Server-Endpoints)
     * [/](#root---)
+    * [/proxy](#proxy---)
     * [/seed](#seeding-data---seed)
     * [/house/:id](#finding-a-house---houseid)
     * [/map/:service](#getting-markers-for-the-map---mapservice)
@@ -322,6 +323,11 @@ Do the following following:
 ### Root - /
   - Expects a GET Request
   - Responds with the index.html file
+  - Sending a request without parameters will result in content without any housing data, and therefore no map. To retrieve the module with housing information included, include id as a parameter in the request.
+
+### Proxy - /proxy
+  - Expects a GET Request
+  - Responds with the webpack bundle
   - Sending a request without parameters will result in content without any housing data, and therefore no map. To retrieve the module with housing information included, include id as a parameter in the request.
 
 ### Seeding Data - /seed

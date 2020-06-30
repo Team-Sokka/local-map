@@ -22,14 +22,15 @@ app.use(express.static(path.join(__dirname, '../public')))
 app.get('/', (req, res) => {
   res.sendFile('index');
 });
+//Sends webpack bundle
+app.get('/proxy',(req, res) =>{
+  res.sendFile('bundle.js', {root:path.join(__dirname, '../public/dist')})
+})
+
 //Shows Seed Data
 app.get('/seed', (req, res) => {
   res.send(trulia.truliaData.data);
 });
-
-app.get('/proxy',(req, res) =>{
-  res.sendFile('bundle.js', {root:path.join(__dirname, '../public/dist')})
-})
 
 //Route for getting housing data
 app.get('/house/:id', (req, res) =>{
