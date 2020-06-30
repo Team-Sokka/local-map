@@ -73,7 +73,7 @@ npm run build
 ```
 
 ### Additional Setup for a Proxy Server
-Do the following following:
+Do the following following inside the proxy's html file:
 1. Add the following to the head:
 >  <!-- Icons for local map -->
 >  <script src="https://kit.fontawesome.com/cb5488eec8.js" crossorigin="anonymous"></script>
