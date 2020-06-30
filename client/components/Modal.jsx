@@ -24,10 +24,12 @@ const FlexContainer = styled.div.attrs({id: 'modal'})`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(20px);
   visibility: ${props => props.hide? 'hidden': 'visible'};
+  z-index: 80000;
+  top: 0;
 `
 
 const ModalContainer = styled.div`
