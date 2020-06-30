@@ -181,6 +181,11 @@ class App extends React.Component {
     this.setState({
       modalVisible: modalVisibility,
     });
+    if (modalVisibility) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
   }
   showState(){
     console.log('State - ', this.state)
@@ -281,20 +286,20 @@ class App extends React.Component {
             <MapTitle>Street View</MapTitle>
             <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer>
+        <IndividualMapContainer onClick={this.schoolsMap}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/schools.svg'}></MapTile>
             <MapTitle>Schools</MapTitle>
             <MapSubTitle>1 Elementary School</MapSubTitle>
             <MapSubTitle>1 Middle School</MapSubTitle>
             <MapSubTitle>1 High School</MapSubTitle>
         </IndividualMapContainer>
-        <IndividualMapContainer>
+        <IndividualMapContainer onClick={this.crimeMap}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
             <MapTitle>Crime</MapTitle>
             <MapSubTitle>Lowest crime relative to the rest of Honolulu County</MapSubTitle>
         </IndividualMapContainer>
 
-        <IndividualMapContainer>
+        <IndividualMapContainer onClick={this.commuteMap}>
           <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/commute.svg'}></MapTile>
             <MapTitle>Commute</MapTitle>
             <MapSubTitle>96% of residents commute by car</MapSubTitle>

@@ -157,6 +157,7 @@ Do the following following inside the proxy's html file:
     - Changes the state of modalVisible to hide or show the modal.
     - Checks the state of modalVisible
     - Sets the state of modalVisible to its opposite
+    - Based on modalVisibility, sets the overflow style for the body tag.
 
   - showState()
     - Helper function useful for debugging.
