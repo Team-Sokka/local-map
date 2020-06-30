@@ -38,7 +38,7 @@ class App extends React.Component {
   componentDidMount(){
     var params = this.pullParams();
     //console.log('Params', params)
-    axios.get(`${process.env.HOST}:${process.env.PORT}/house/${params.id}`)
+    axios.get(`${process.env.HOST_URL}:${process.env.PORT}/house/${params.id}`)
     .then((data)=> {
       this.setState({
         currentHouse: data.data[0],
@@ -86,7 +86,7 @@ class App extends React.Component {
     var centerMarker = new google.maps.Marker({position: centerPoint, map: map});
   }
   getShopAndEatMarkers(){
-    axios.get(`${process.env.HOST}:${process.env.PORT}/map/yelp`,{params:{
+    axios.get(`${process.env.HOST_URL}:${process.env.PORT}/map/yelp`,{params:{
       lat: this.state.location[1],
       lng: this.state.location[0]
     }
