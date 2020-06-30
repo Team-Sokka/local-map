@@ -26,7 +26,7 @@
     * [StreetView](#StreetView)
 1. [Server Endpoints](#Server-Endpoints)
     * [/](#root---)
-    * [/proxy](#proxy---)
+    * [/proxy](#proxy---proxy)
     * [/seed](#seeding-data---seed)
     * [/house/:id](#finding-a-house---houseid)
     * [/map/:service](#getting-markers-for-the-map---mapservice)
