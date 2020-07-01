@@ -30,6 +30,7 @@ const FlexContainer = styled.div.attrs({id: 'modal'})`
   visibility: ${props => props.hide? 'hidden': 'visible'};
   z-index: 80000;
   top: 0;
+  left: 0;
 `
 
 const ModalContainer = styled.div`
