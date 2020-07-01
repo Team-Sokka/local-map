@@ -349,7 +349,7 @@ textarea, input, button {
   margin-top: 100px;
   width: 300px
 }
-svg {
+.svgMap {
   height: 24px;
   width: 24px;
   vertical-align: middle;
