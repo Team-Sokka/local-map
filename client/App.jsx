@@ -353,7 +353,7 @@ textarea, input, button {
   height: 24px;
   width: 24px;
   vertical-align: middle;
-  padding: 5px;
+  padding: 1px;
 }
 `
 
