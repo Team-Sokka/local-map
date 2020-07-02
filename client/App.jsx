@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
+import { GlobalStyle, MapModuleContainer, IndividualMapContainer, MapTile, MapTitle, MapSubTitle} from './styles.js';
 import Modal from './components/Modal.jsx';
 import categories from '../database/yelpcategories.js'
 
@@ -259,7 +258,7 @@ class App extends React.Component {
     this.clearAllMarkers();
     if (this.state.modalVisible) this.toggleModal()
   }
-  clearAllMarkers(){
+  clearAllMarkers() {
     this.state.shopAndEatMarkers.forEach(marker => {
       marker.setMap(null)
     })
@@ -317,77 +316,7 @@ class App extends React.Component {
       </React.Fragment>
     )
   }
-
 }
-const GlobalStyle = createGlobalStyle`
-body {
-  font-family: 'Roboto', sans-serif, "Segoe UI Bold", Arial, sans-serif;
-  margin: 0px;
-}
-
-textarea, input, button {
-  font-family: 'Roboto', sans-serif, "Segoe UI Bold", Arial, sans-serif;
-}
-
-
-#mapModule{
-  display: flex;
-  justify-content: space-around;
-}
-
-#map {
-  height: 92%;
-}
-#street-view {
-  height: 100%;
-}
-
-#yelp-list {
-  background-color: purple;
-  position: absolute;
-  z-index: 3;
-  margin-top: 100px;
-  width: 300px
-}
-.svgMap {
-  height: 24px;
-  width: 24px;
-  vertical-align: middle;
-  padding: 1px;
-}
-`
-
-//Styled Components
-const MapModuleContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-const IndividualMapContainer = styled.div`
-  max-width: 150px;
-  min-width: 100px;
-  flex: 1;
-  padding:10px
-`;
-
-const MapTile = styled.div`
-  border-radius: 6px;
-  background-image: ${props => props.img? `url(${props.img})` : `url('https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/basic-view.png')` };
-  background-repeat: no-repeat;
-  background-position: center;
-  height:104px;
-  background-size: 100%;
-`;
-const MapTitle = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 1.5;
-`;
-const MapSubTitle = styled.div`
-  color: rgb(134, 144, 153);
-  font-size: 14px;
-  line-height: 1.43;
-`;
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
 

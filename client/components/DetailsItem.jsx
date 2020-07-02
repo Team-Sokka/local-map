@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import { ItemContainer, LeftContainer, RightContainer, ItemTitle, ItemSubtitle, ItemContent, BusinessImage, ReviewsAndRating } from '../styles.js';
 
 const DetailsItem = (props) => (
 <ItemContainer>
@@ -40,48 +40,6 @@ var ratingImages = {
   '4.5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_4_half.png',
   '5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_5.png'
 }
-const ItemContainer = styled.div`
-background-color: white;
-padding: 5px;
-margin: 10px;
-border-radius: 8px;
-border-color: rgb(232, 233, 234);
-border-style: solid;
-border-width: 1px;
-display: flex;
-flex-direction: row;
-align-items:center;
-`
-const LeftContainer = styled.div`
-flex:1
-`
 
-const RightContainer = styled.div`
-flex: 4;
-padding-left: 5px;
-`
-
-const ItemTitle = styled.div`
-color: rgb(59, 65, 68);
-`
-const ItemSubtitle = styled.div`
-font-size: 14px;
-color: gray;
-`
-const ItemContent = styled.div`
-`
-const BusinessImage = styled.img`
-height: 53px;
-width: 53px;
-object-fit: cover;
-border-radius: 8px;
-`
-
-const ReviewsAndRating = styled.div`
-font-size: 10px;
-color: rgb(134, 144, 153);
-display: flex;
-justify-content: space-between;
-`
 
 export default DetailsItem;

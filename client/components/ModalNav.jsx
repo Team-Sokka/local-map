@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { NavWrapper, LeftNavContainer, RightNavContainer, Button, Right Button, CloseButton} from '../styles.js'
 
 const ModalNav = (props) => {
   const {currentMapView, mapToggles, closeModal} = props
@@ -23,66 +23,5 @@ const ModalNav = (props) => {
   </NavWrapper>
   )
 }
-
-//Styled Components
-const NavWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  max-width: inherit;
-  box-sizing: border-box;
-  width: 100%;
-  background-color: rgb(255,255,255);
-  margin: 0;
-  position: relative;
-  border-radius: 5px;
-  flex-direction: row;
-  padding: 0px 0px;
-  height: 8%;
-`;
-
-const LeftNavContainer = styled.div`
-`;
-
-const RightNavContainer = styled.div`
-`;
-
-const Button = styled.button `
-  color: ${props => props.active? 'rgb(0,120,130)' : 'rgb(59,65,68)'};
-  border-color: ${props => props.active? 'rgb(232,233,234)' : 'transparent'};
-  box-shadow: ${props => props.active? 'rgba(59, 65, 68, 0.4) 0px 8px 20px -15px':'none'};
-  border-style: solid;
-  border-width: 1px;
-  background-color: transparent;
-  border-radius: 8px;
-  border-width: 1px;
-  text-align:center;
-  margin: 5px;
-  padding: 8px 16px;
-  line-height: 1.5;
-  font-size: 16px;
-  font-weight: bold;
-  transition: top 0.1s ease 0s, box-shadow 0.1s ease 0s, border-color 0.1s ease 0s, background-color 0.1s ease 0s, color 0.1s ease 0s;
-  &:hover{
-    background-color: rgb(239,239,239);
-  }
-  &:focus{
-    outline-color: rgb(239,239,239);
-  }
-`
-
-const RightButton = styled(Button)`
-  border-color: rgb(232,233,234);
-  box-shadow: rgba(59, 65, 68, 0.4) 0px 8px 20px -15px;
-  border-style: solid;
-  border-width: 1px;
-`
-
-const CloseButton = styled(Button)`
-  &:hover{
-    color: rgb(0,120,130);
-    background-color: transparent;
-  }
-`
 
 export default ModalNav;
