@@ -257,3 +257,37 @@ color: rgb(134, 144, 153);
 display: flex;
 justify-content: space-between;
 `
+
+
+//Modal
+export const ModalFlexContainer = styled.div.attrs({id: 'modal'})`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  visibility: ${props => props.hide? 'hidden': 'visible'};
+  z-index: 80000;
+  top: 0;
+  left: 0;
+`
+
+export const ModalContainer = styled.div`
+  height: calc(100% - 96px);
+  width: calc(100% - 96px);
+  z-index: 1000;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245,245,245);
+  border-color: silver;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: auto;
+  visibility: ${props => props.hide? 'hidden': 'visible'};
+`
