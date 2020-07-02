@@ -46,10 +46,10 @@
 
 ### Module Setup
 Create a .env file in the root directory, with the following properties
-1. HOST_URL= **{INSERT YOUR HOST URL}**
-1. PORT= **{INSERT DESIRED PORT}**
-1. YELP_API_KEY= **{INSERT YOUR YELP API KEY}**
-1. MONGO_DB_URI= **{INSERT YOUR MONGODB URI}**
+1. HOST_URL= **INSERT YOUR HOST URL**
+1. PORT= **INSERT DESIRED PORT**
+1. YELP_API_KEY= **INSERT YOUR YELP API KEY**
+1. MONGO_DB_URI= **INSERT YOUR MONGODB URI**
 
 ### Installing Dependencies
 
