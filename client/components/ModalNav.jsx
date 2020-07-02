@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavWrapper, LeftNavContainer, RightNavContainer, Button, Right Button, CloseButton} from '../styles.js'
+import { NavWrapper, LeftNavContainer, RightNavContainer, Button, RightButton, CloseButton} from '../styles.js'
 
 const ModalNav = (props) => {
   const {currentMapView, mapToggles, closeModal} = props
