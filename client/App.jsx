@@ -258,7 +258,7 @@ class App extends React.Component {
     this.clearAllMarkers();
     if (this.state.modalVisible) this.toggleModal()
   }
-  clearAllMarkers(){
+  clearAllMarkers() {
     this.state.shopAndEatMarkers.forEach(marker => {
       marker.setMap(null)
     })
@@ -316,7 +316,6 @@ class App extends React.Component {
       </React.Fragment>
     )
   }
-
 }
 
 ReactDOM.render(<App/>, document.getElementById('mapModule'))
