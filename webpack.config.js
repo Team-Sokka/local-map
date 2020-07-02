@@ -4,8 +4,6 @@ var dotenv = require('dotenv').config({path: __dirname + '/.env'})
 
 module.exports = {
   entry: './client/App.jsx',
-  mode: 'development',
-  watch: true,
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public/dist'),
