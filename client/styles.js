@@ -212,3 +212,48 @@ font-size: 10px;
 line-height: 16px;
 color: rgb(134, 144, 153);
 `
+
+//DetailsItem
+export const ItemContainer = styled.div`
+background-color: white;
+padding: 5px;
+margin: 10px;
+border-radius: 8px;
+border-color: rgb(232, 233, 234);
+border-style: solid;
+border-width: 1px;
+display: flex;
+flex-direction: row;
+align-items:center;
+`
+export const LeftContainer = styled.div`
+flex:1
+`
+
+export const RightContainer = styled.div`
+flex: 4;
+padding-left: 5px;
+`
+
+export const ItemTitle = styled.div`
+color: rgb(59, 65, 68);
+`
+export const ItemSubtitle = styled.div`
+font-size: 14px;
+color: gray;
+`
+export const ItemContent = styled.div`
+`
+export const BusinessImage = styled.img`
+height: 53px;
+width: 53px;
+object-fit: cover;
+border-radius: 8px;
+`
+
+export const ReviewsAndRating = styled.div`
+font-size: 10px;
+color: rgb(134, 144, 153);
+display: flex;
+justify-content: space-between;
+`
