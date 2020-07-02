@@ -71,7 +71,7 @@ class Details extends React.Component {
           Shop & Eat
           </MainTitle>
           <SubTitle>
-            Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
+            Amenity information provided by <img src="https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
           </SubTitle>
         </TitleContainer>
         <ContentContainer>
