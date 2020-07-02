@@ -104,24 +104,24 @@ class App extends React.Component {
   createShopAndEatMarkers(businessArray){
     var markers = businessArray.map((business) => {
       let iconMarker = {
-        url: 'https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png',
+        url: 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/yelp_logo_small.png',
         scaledSize: new google.maps.Size(30,30)
       }
       for (var category of business.categories) {
         if (categories.restaurants[category.alias]) {
-          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/RestaurantsDotIcon@2x.png'
+          iconMarker.url = 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/RestaurantsDotIcon%402x.png';
           break;
         } else if (categories.fitness[category.alias]) {
-          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/FitnessDotIcon@2x.png'
+          iconMarker.url = 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/FitnessDotIcon%402x.png';
           break;
         } else if (categories.shopping[category.alias]) {
-          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/ShoppingBagDotIcon@2x.png'
+          iconMarker.url = 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/ShoppingBagDotIcon%402x.png';
           break;
         } else if (categories.entertainment[category.alias]) {
-          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/EntertainmentDotIcon@2x.png'
+          iconMarker.url = 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/EntertainmentDotIcon%402x.png';
           break;
         }  else if (categories.nightlife[category.alias]) {
-          iconMarker.url = 'https://www.trulia.com/images/txl3R/map_markers/shop_and_eat/NightLifeDotIcon@2x.png';
+          iconMarker.url = 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/NightLifeDotIcon%402x.png';
           break;
         } else {
           console.log('Category - ', category)
@@ -130,16 +130,16 @@ class App extends React.Component {
       var newMarker = new google.maps.Marker({position: {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, icon: iconMarker,  map: window.map})
 
       var ratingImages = {
-        '0': 'https://www.trulia.com/images/txl/icons/yelp/small_0.png',
-        '1': 'https://www.trulia.com/images/txl/icons/yelp/small_1.png',
-        '1.5': 'https://www.trulia.com/images/txl/icons/yelp/small_1_half.png',
-        '2': 'https://www.trulia.com/images/txl/icons/yelp/small_2.png',
-        '2.5': 'https://www.trulia.com/images/txl/icons/yelp/small_2_half.png',
-        '3': 'https://www.trulia.com/images/txl/icons/yelp/small_3.png',
-        '3.5': 'https://www.trulia.com/images/txl/icons/yelp/small_3_half.png',
-        '4': 'https://www.trulia.com/images/txl/icons/yelp/small_4.png',
-        '4.5': 'https://www.trulia.com/images/txl/icons/yelp/small_4_half.png',
-        '5': 'https://www.trulia.com/images/txl/icons/yelp/small_5.png'
+        '0': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_0.png',
+        '1': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_1.png',
+        '1.5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_1_half.png',
+        '2': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_2.png',
+        '2.5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_2_half.png',
+        '3': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_3.png',
+        '3.5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_3_half.png',
+        '4': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_4.png',
+        '4.5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_4_half.png',
+        '5': 'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/small_5.png'
       }
 
       var info = new google.maps.InfoWindow({
@@ -276,36 +276,36 @@ class App extends React.Component {
        mapHeight={mapViewHeight} streetViewHeight={streetViewHeight}/>
       <MapModuleContainer>
         <IndividualMapContainer onClick={this.basicMap}>
-          <MapTile img={'https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.264822308314%2C-157.81543590334&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=edB-arPGl4jYJ1A5XpxJcZOtBg8%3D'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/staticmap.png'}></MapTile>
 
           <MapTitle>Map View</MapTitle>
     <MapSubTitle>Explore the area around {currentHouse.address? currentHouse.address.substring(0, currentHouse.address.indexOf(',')) : ''}</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.streetViewMap}>
-          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/streetview.svg'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/streetview.svg'}></MapTile>
             <MapTitle>Street View</MapTitle>
             <MapSubTitle>Take a virtual walk around the neighborhood</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.schoolsMap}>
-          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/schools.svg'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/schools.svg'}></MapTile>
             <MapTitle>Schools</MapTitle>
             <MapSubTitle>1 Elementary School</MapSubTitle>
             <MapSubTitle>1 Middle School</MapSubTitle>
             <MapSubTitle>1 High School</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.crimeMap}>
-          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/crime.svg'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/crime.svg'}></MapTile>
             <MapTitle>Crime</MapTitle>
             <MapSubTitle>Lowest crime relative to the rest of Honolulu County</MapSubTitle>
         </IndividualMapContainer>
 
         <IndividualMapContainer onClick={this.commuteMap}>
-          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/commute.svg'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/commute.svg'}></MapTile>
             <MapTitle>Commute</MapTitle>
             <MapSubTitle>96% of residents commute by car</MapSubTitle>
         </IndividualMapContainer>
         <IndividualMapContainer onClick={this.shopAndEatMap}>
-          <MapTile img={'https://www.trulia.com/images/txl3R/local_cards/shop_eat.svg'}></MapTile>
+          <MapTile img={'https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/shop_eat.svg'}></MapTile>
             <MapTitle>Shop & Eat</MapTitle>
             <MapSubTitle>208 Restaurants</MapSubTitle>
             <MapSubTitle>21 Groceries</MapSubTitle>
@@ -372,7 +372,7 @@ const IndividualMapContainer = styled.div`
 
 const MapTile = styled.div`
   border-radius: 6px;
-  background-image: ${props => props.img? `url(${props.img})` : `url('https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=156x106&scale=1&markers=icon%3Ahttps%3A%2F%2Fstatic.trulia-cdn.com%2Fimages%2Fapp-shopping%2Fmap-marker-txl3R%2FMapMarkerHouseIcon_large%401x.png%7Cscale%3A1%7C21.260159%2C-157.70671&style=feature%3Aadministrative%7Cvisibility%3Aoff&style=feature%3Apoi%7Cvisibility%3Aoff&key=AIzaSyCzWKDOMLGYlR3C9dltAR7sbLvcQEWNcvc&signature=ZKRlRKbvfUwbO2EJ-LTPi2gyskY%3D')` };
+  background-image: ${props => props.img? `url(${props.img})` : `url('https://hrr46-fec-localmap-bucket.s3.amazonaws.com/map-views/basic-view.png')` };
   background-repeat: no-repeat;
   background-position: center;
   height:104px;

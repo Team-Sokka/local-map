@@ -71,7 +71,7 @@ class Details extends React.Component {
           Shop & Eat
           </MainTitle>
           <SubTitle>
-            Amenity information provided by <img src="https://www.trulia.com/images/txl/icons/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
+            Amenity information provided by <img src="https://hrr46-fec-localmap-bucket.s3.amazonaws.com/yelp/yelp_logo_small.png" style={{"width": "40px", "marginBottom": "4px", "paddingLeft": "2px"}}/>
           </SubTitle>
         </TitleContainer>
         <ContentContainer>
@@ -96,7 +96,7 @@ class Details extends React.Component {
           </CheckboxContainer>
         </Form>
         <LegalDisclaimer>
-        By pressing Request Info, you agree that House Reactor and real estate professionals may contact you via phone/text about your inquiry, which may involve the use of automated means. You are not required to consent as a condition of purchasing any property, goods or services. Message/data rates may apply. You also agree to our <a target="_blank" href="https://www.trulia.com/terms">Terms of Use</a>&nbsp;House Reactor does not endorse any <span><a target="_blank">real estate professionals</a></span>&nbsp;
+        By pressing Request Info, you agree that House Reactor and real estate professionals may contact you via phone/text about your inquiry, which may involve the use of automated means. You are not required to consent as a condition of purchasing any property, goods or services. Message/data rates may apply. You also agree to our <a target="_blank" href="">Terms of Use</a>&nbsp;House Reactor does not endorse any <span><a target="_blank">real estate professionals</a></span>&nbsp;
         </LegalDisclaimer>
       </FormContainer>
     }
