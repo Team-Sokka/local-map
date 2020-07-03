@@ -4,5 +4,4 @@ dist
 config.js
 .DS_Store
 dockerfile
-docker-compose.yml
 gruntfile.js
