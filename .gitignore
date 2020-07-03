@@ -3,3 +3,5 @@
 dist
 config.js
 .DS_Store
+dockerfile
+gruntfile.js
